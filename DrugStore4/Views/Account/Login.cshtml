@@ -1,0 +1,9 @@
+﻿<div class="login center">
+    <h1 class="login-title">Войдите в свой аккаунт</h1>
+    <div class="login-field">
+        <div class="login-field__div">Почта<input type="email" name="Email" onclick="clearError()"></div>
+        <div class="login-field__div">Пароль<input type="password" name="Password" onclick="clearError()"></div>
+    </div>
+    <div class="login-error"></div>
+    <button class="login-button" v-on:click="loginData">Войти</button>
+</div>

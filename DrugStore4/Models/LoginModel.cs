@@ -1,9 +1,8 @@
 ﻿namespace DrugStore4.Models
 {
-    public class RegistrationModel
+    public class LoginModel
     {
         public string? Email { get; set; }
         public string? Password { get; set; }
-        public string? DoublePassword { get; set;}
     }
 }

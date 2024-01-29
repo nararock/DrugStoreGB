@@ -34,6 +34,12 @@ namespace DrugStore4.Controllers
                     result.Message = "Все поля должны быть заполнены.";
                     return new JsonResult(result);
                 }
+                else if (registrationModel.Password != registrationModel.DoublePassword)
+                {
+                    result.Code = 1;
+                    result.Message = "Введенные пароли не совпадают.";
+                    return new JsonResult(result);
+                }
                 else if ((await _userManager.FindByEmailAsync(registrationModel.Email)) != null)
                 {
                     result.Code = 1;
@@ -67,6 +73,33 @@ namespace DrugStore4.Controllers
                 result.Message = e.Message + " Произошла ошибка, попробуйте еще раз.";
                 return new JsonResult(result);
             }
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> Login([FromBody] LoginModel loginModel)
+        {
+            CommonResponse result = new CommonResponse();
+            if (loginModel.Email == null || loginModel.Password == null)
+            {
+                result.Code = 1;
+                result.Message = "Все поля должны быть заполнены.";
+                return new JsonResult(result);
+            }
+            var answer = await _signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password, true, false);
+            if (answer.Succeeded)
+            {
+                result.Code = 0;
+                result.Message = "Регистрация завершена.";
+                return new JsonResult(result);
+            }
+            result.Code = 1;
+            result.Message = "Ваша почта или пароль не верны.";
+            return new JsonResult(result);
         }
     }
 }
