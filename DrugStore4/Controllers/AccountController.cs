@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace DrugStore4.Controllers
 {
     
-    public class RegistrationController : Controller
+    public class AccountController : Controller
     {
         private UserManager<User> _userManager;
         private SignInManager<User> _signInManager;
-        public RegistrationController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -22,7 +22,7 @@ namespace DrugStore4.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> Create([FromBody] RegistrationModel registrationModel)
+        public async Task<JsonResult> Registrate([FromBody] RegistrationModel registrationModel)
         {
             CommonResponse result = new CommonResponse();
             try
