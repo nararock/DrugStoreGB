@@ -1,15 +1,15 @@
 //Registration
-function createUser() {
+function registrateUser() {
     var email = document.querySelector(".registration-field__div input[name = 'Email']").value;
     console.log(email);
     var password = document.querySelector(".registration-field__div input[name = 'Password']").value;
     var doublePassword = document.querySelector(".registration-field__div input[name = 'DoublePassword']").value;
     if (password == doublePassword) {
-        fetch('/Registration/Create', {
+        fetch('/Account/Registrate', {
             method: 'POST',
             body: JSON.stringify({
-                Email: this.email,
-                Password: this.password
+                Email: email,
+                Password: password
             }),
             headers: {
                 // Добавляем необходимые заголовки
