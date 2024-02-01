@@ -16,7 +16,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="sassconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Scripts\main.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="sassconfig.json" />
   </ItemGroup>
 
   <ItemGroup>
