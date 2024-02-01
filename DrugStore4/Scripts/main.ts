@@ -60,7 +60,7 @@ function loginUser() {
                 let error = document.querySelector(".login-error");
                 error.textContent = answer.message;
             } else {
-                window.location.replace('/account');
+                window.location.replace('/Profile/Index');
             }
         })
 }

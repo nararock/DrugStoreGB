@@ -56,7 +56,7 @@ function loginUser() {
             error.textContent = answer.message;
         }
         else {
-            window.location.replace('/account');
+            window.location.replace('/Profile/Index');
         }
     });
 }
