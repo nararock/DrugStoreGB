@@ -101,5 +101,10 @@ namespace DrugStore4.Controllers
             result.Message = "Ваша почта или пароль не верны.";
             return new JsonResult(result);
         }
+
+        public async Task<IActionResult> Logout() {
+            await _signInManager.SignOutAsync();
+            return Redirect("/");
+        }
     }
 }
