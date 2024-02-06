@@ -1,5 +1,9 @@
 [
   {
+    "outputFile": "wwwroot/scss/_adStyle.css",
+    "inputFile": "wwwroot/scss/_adStyle.scss"
+  },
+  {
     "outputFile": "wwwroot/scss/style.css",
     "inputFile": "wwwroot/scss/style.scss"
   }

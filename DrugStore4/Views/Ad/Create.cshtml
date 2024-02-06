@@ -1,0 +1,76 @@
+﻿@using DrugStore4.Models
+@model CreateAdModel
+@{
+    DateTime date = DateTime.Now;
+    int year = date.Year;
+}
+
+<div class="ad center">
+    <h1 class="ad-title">Описание лекарственного препарата</h1>
+    <h2 class="ad-subtitle">Заполните поля</h2>
+    <div class="wrapper">
+        <div class="ad-input">
+            Название
+            <input type="text">
+        </div>
+        <label for="" class="ad-select">
+            Форма выпуска
+            <select name="" id="">
+                @foreach(var element in Model.typeAd)
+                {
+                    <option value="@element.Id">@element.Name</option>
+                }
+            </select>
+        </label>
+        <label for="" class="ad-select">
+            Категория
+            <select name="" id="">
+                @foreach(var element in Model.categoryAd)
+                {
+                    <option value="@element.Id">@element.Name</option>
+                }
+            </select>
+        </label>
+        <label for="" class="ad-input">
+            Дозировка
+            <input type="text">
+        </label>
+        <label for="" class="ad-input">
+            Оставшееся количество
+            <input type="text">
+        </label>
+        <label for="" class="ad-select">
+            Срок годности
+            <select name="" id="">
+                <option value="">Январь</option>
+                <option value="">Февраль</option>
+                <option value="">Март</option>
+                <option value="">Апрель</option>
+                <option value="">Май</option>
+                <option value="">Июнь</option>
+                <option value="">Июль</option>
+                <option value="">Август</option>
+                <option value="">Сентябрь</option>
+                <option value="">Октябрь</option>
+                <option value="">Ноябрь</option>
+                <option value="">Декабрь</option>
+            </select>
+            <select name="" id="">
+                <option value="1">@year</option>
+                <option value="2">@(year + 1)</option>
+                <option value="3">@(year + 2)</option>
+                <option value="4">@(year + 3)</option>
+                <option value="5">@(year + 4)</option>
+            </select>
+        </label>
+        <label for="" class="ad-input">
+            Производитель
+            <input type="text">
+        </label>
+        <label for="" class="ad-textarea">
+            Описание
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+        </label>
+    </div>
+    <button class="ad-button">Разместить</button>
+</div>
