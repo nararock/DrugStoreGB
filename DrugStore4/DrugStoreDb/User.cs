@@ -4,5 +4,6 @@ namespace DrugStore4.DrugStoreDb
 {
     public class User: IdentityUser
     {
+        public List<Ad> Ads { get; set; }
     }
 }
