@@ -3,6 +3,7 @@
 @{
     DateTime date = DateTime.Now;
     int year = date.Year;
+    string[] monthArr = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
 }
 
 <div class="ad center">
@@ -11,51 +12,43 @@
     <div class="wrapper">
         <div class="ad-input">
             Название
-            <input type="text">
+            <input type="text" name="Title">
         </div>
         <label for="" class="ad-select">
             Форма выпуска
-            <select name="" id="">
+            <select name="Type" id="">
                 @foreach(var element in Model.typeAd)
                 {
-                    <option value="@element.Id">@element.Name</option>
+                    <option name="" value='@element.Id'>@element.Name</option>
                 }
             </select>
         </label>
         <label for="" class="ad-select">
             Категория
-            <select name="" id="">
+            <select name="Category" id="">
                 @foreach(var element in Model.categoryAd)
                 {
-                    <option value="@element.Id">@element.Name</option>
+                    <option name="" value="@element.Id">@element.Name</option>
                 }
             </select>
         </label>
         <label for="" class="ad-input">
             Дозировка
-            <input type="text">
+            <input name="Dose" type="text">
         </label>
         <label for="" class="ad-input">
             Оставшееся количество
-            <input type="text">
+            <input name="Amount" type="text">
         </label>
         <label for="" class="ad-select">
             Срок годности
-            <select name="" id="">
-                <option value="">Январь</option>
-                <option value="">Февраль</option>
-                <option value="">Март</option>
-                <option value="">Апрель</option>
-                <option value="">Май</option>
-                <option value="">Июнь</option>
-                <option value="">Июль</option>
-                <option value="">Август</option>
-                <option value="">Сентябрь</option>
-                <option value="">Октябрь</option>
-                <option value="">Ноябрь</option>
-                <option value="">Декабрь</option>
+            <select name="Month" id="">
+                @for (int i = 0; i < monthArr.Length; i++)
+                {
+                    <option name="" value="@(i+1)">@monthArr[i]</option>
+                }
             </select>
-            <select name="" id="">
+            <select name="Year" id="">
                 <option value="1">@year</option>
                 <option value="2">@(year + 1)</option>
                 <option value="3">@(year + 2)</option>
@@ -65,12 +58,12 @@
         </label>
         <label for="" class="ad-input">
             Производитель
-            <input type="text">
+            <input type="text" name="Manufacturer">
         </label>
         <label for="" class="ad-textarea">
             Описание
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <textarea name="Description" id="" cols="30" rows="10"></textarea>
         </label>
     </div>
-    <button class="ad-button">Разместить</button>
+    <button class="ad-button" onclick="createAd()">Разместить</button>
 </div>

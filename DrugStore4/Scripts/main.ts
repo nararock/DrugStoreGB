@@ -64,3 +64,36 @@ function loginUser() {
             }
         })
 }
+
+//create Ad
+function createAd() {
+    let title = document.querySelector<HTMLInputElement>(".ad-input input[name = 'Title']").value;
+    let type = document.querySelector<HTMLInputElement>(".ad-select select[name = 'Type']").value;
+    let category = document.querySelector<HTMLInputElement>(".ad-select select[name = 'Category']").value;
+    let dose = document.querySelector<HTMLInputElement>(".ad-input input[name = 'Dose']").value;
+    let amount = document.querySelector<HTMLInputElement>(".ad-input input[name = 'Amount']").value;
+    let month = document.querySelector<HTMLInputElement>(".ad-select select[name = 'Month']").value;
+    let year = document.querySelector<HTMLInputElement>(".ad-select select[name = 'Year']").value;
+    let manufacturer = document.querySelector<HTMLInputElement>(".ad-input input[name = 'Manufacturer']").value;
+    let description = document.querySelector<HTMLInputElement>(".ad-textarea textarea[name = 'Description']").value;
+
+    fetch('/Ad/Create', {
+        method: 'POST',
+        body: JSON.stringify({
+            Title: title,
+            Type: type,
+            Category: category,
+            Dose: dose,
+            Amount: amount,
+            Month: month,
+            Year: year,
+            Manufacturer: manufacturer,
+            Description: description
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+        credentials: 'include'
+    })
+    .then((response) => response.json())
+}

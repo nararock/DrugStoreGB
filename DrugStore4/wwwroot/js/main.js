@@ -60,4 +60,35 @@ function loginUser() {
         }
     });
 }
+//create Ad
+function createAd() {
+    var title = document.querySelector(".ad-input input[name = 'Title']").value;
+    var type = document.querySelector(".ad-select select[name = 'Type']").value;
+    var category = document.querySelector(".ad-select select[name = 'Category']").value;
+    var dose = document.querySelector(".ad-input input[name = 'Dose']").value;
+    var amount = document.querySelector(".ad-input input[name = 'Amount']").value;
+    var month = document.querySelector(".ad-select select[name = 'Month']").value;
+    var year = document.querySelector(".ad-select select[name = 'Year']").value;
+    var manufacturer = document.querySelector(".ad-input input[name = 'Manufacturer']").value;
+    var description = document.querySelector(".ad-textarea textarea[name = 'Description']").value;
+    fetch('/Ad/Create', {
+        method: 'POST',
+        body: JSON.stringify({
+            Title: title,
+            Type: type,
+            Category: category,
+            Dose: dose,
+            Amount: amount,
+            Month: month,
+            Year: year,
+            Manufacturer: manufacturer,
+            Description: description
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+        credentials: 'include'
+    })
+        .then(function (response) { return response.json(); });
+}
 //# sourceMappingURL=main.js.map
