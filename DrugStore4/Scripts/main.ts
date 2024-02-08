@@ -95,5 +95,14 @@ function createAd() {
         },
         credentials: 'include'
     })
-    .then((response) => response.json())
+        .then((response) => response.json())
+        .then(answer => {
+            if (answer.code == 1) {
+                let error = document.querySelector(".ad-error");
+                error.textContent = answer.message;
+            }
+            else {
+                window.location.replace('/Profile/Index');
+            }
+        })
 }

@@ -12,8 +12,7 @@ namespace DrugStore4.Controllers
         public AdController(DrugStoreDbContext drugStoreDb) {
             _dbContext = drugStoreDb;
         }
-
-        [HttpGet]
+        [Authorize][HttpGet]
         public IActionResult Create()
         {
             AdHelper adHelper = new AdHelper();
@@ -21,10 +20,22 @@ namespace DrugStore4.Controllers
             return View(createAdModel);
         }
 
-        [HttpPost]
-        public void Create([FromBody] AdModel adModel)
+        [Authorize][HttpPost]
+        public async Task<JsonResult> Create([FromBody] AdModel adModel)
         {
-            Console.WriteLine();
+            CommonResponse result = new CommonResponse();
+            if (adModel.Title == null || adModel.Dose == null || adModel.Amount == null)
+            {
+                result.Code = 1;
+                result.Message = "Поля с названием лекарства, дозой и оставшимся количеством должны быть заполнены.";
+                return new JsonResult(result);
+            }
+            string nameUser = User.Identity.Name;
+            AdHelper adHelper = new AdHelper();
+            adHelper.createNewAd(_dbContext, adModel, nameUser);
+            result.Code = 0;
+            result.Message = "";
+            return new JsonResult(result);
         }
         
     }

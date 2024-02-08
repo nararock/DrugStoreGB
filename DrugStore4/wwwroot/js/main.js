@@ -89,6 +89,15 @@ function createAd() {
         },
         credentials: 'include'
     })
-        .then(function (response) { return response.json(); });
+        .then(function (response) { return response.json(); })
+        .then(function (answer) {
+        if (answer.code == 1) {
+            var error = document.querySelector(".ad-error");
+            error.textContent = answer.message;
+        }
+        else {
+            window.location.replace('/Profile/Index');
+        }
+    });
 }
 //# sourceMappingURL=main.js.map
