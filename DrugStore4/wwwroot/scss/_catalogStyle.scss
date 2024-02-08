@@ -1,0 +1,171 @@
+﻿.catalog {
+    border-top: 1px solid #EFEFEF;
+    padding-top: 47px;
+    margin-bottom: 80px;
+
+    &-title {
+        @include font($color, 30px, 700, normal);
+        text-transform: uppercase;
+        margin-bottom: 40px;
+    }
+
+    &-subtitle {
+        @include font($color, 16px, 700, normal);
+        text-align: right;
+        margin-bottom: 26px;
+    }
+
+    &-categories {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 45px;
+
+        &__item {
+            width: 160px;
+            height: 160px;
+            box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.15);
+            @include font($color, $size, 700, $height);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+
+
+            div {
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    }
+
+    &-sort {
+        margin-bottom: 30px;
+
+        select {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            border: 1px solid #E3E3E3;
+        }
+    }
+
+    &-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 50px;
+
+        .catalog-offers {
+            width: 76%;
+
+            &__block {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+                gap: 30px;
+
+                .catalog-offers__item {
+                    display: flex;
+                    flex-direction: column;
+                    border: 1px solid #EFEFEF;
+                    padding-top: 29px;
+
+                    img {
+                        width: 30%;
+                        margin: auto;
+                    }
+
+                    .catalog-offers__title {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        &__big {
+                            @include font($color, 16px, 700, 26px);
+                        }
+
+                        &__small {
+                            @include font(#75758A, $size, $weight, 26px);
+                        }
+                    }
+
+                    .catalog-offers__info {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+
+                        div {
+                            border: 1px solid #EFEFEF;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            padding-top: 17px;
+                            padding-bottom: 13px;
+                            margin-bottom: 20px;
+                            text-align: center
+                        }
+
+                        &__first {
+                            @include font($color, $size, 700, 20px);
+                        }
+
+                        &__second {
+                            @include font(#75758A, $size, $weight, 20px);
+                        }
+                    }
+
+                    .catalog-offers__button {
+                        width: 140px;
+                        height: 40px;
+                        margin: auto;
+                        border-radius: 100px;
+                        background: #FFF;
+                        border: 1px;
+                        box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.15);
+                        margin-bottom: 20px;
+                        @include font($color, $size, 700, normal);
+                    }
+
+                    .catalog-offers__button:hover {
+                        background-color: #75758A;
+                        color: #FFF;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .catalog-filter {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 20%;
+
+            div {
+                width: 235px;
+                height: 1px;
+                border-top: 1px solid #E3E3E3;
+                margin-bottom: 27px;
+            }
+
+            &__title {
+                @include font($color, $size, 700, $height);
+                text-transform: uppercase;
+                margin-bottom: 14px;
+            }
+
+            &__item {
+                @include font($color, $size, 400, 14px);
+                text-decoration: none;
+                margin-bottom: 15px;
+            }
+
+            &__item:hover {
+                color: #60B021;
+            }
+        }
+    }
+}
