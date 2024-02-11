@@ -1,4 +1,10 @@
-﻿<div class="catalog center">
+﻿@using DrugStore4.Models;
+@model List<CatalogModel>;
+@{
+    string[] monthArr = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
+}
+
+<div class="catalog center">
     <h1 class="catalog-title">Лекарственные средства</h1>
     <h2 class="catalog-subtitle">Популярные категории лекарств</h2>
     <div class="catalog-categories">
@@ -65,7 +71,32 @@
     <div class="catalog-content">
         <div class="catalog-offers">
             <div class="catalog-offers__block">
-                <div class="catalog-offers__item">
+                @foreach(var element in Model)
+                {
+                    <div class="catalog-offers__item">
+                        <img src="/img/@element.PictureURL" alt="capsules foto">
+                        <div class="catalog-offers__title">
+                            <h1 class="catalog-offers__title__big">@element.Title</h1>
+                            <h3 class="catalog-offers__title__small">@element.Category</h3>
+                        </div>
+                        <div class="catalog-offers__info">
+                            <div>
+                                <span class="catalog-offers__info__first">@element.Dose</span>
+                                <span class="catalog-offers__info__second">Дозировка</span>
+                            </div>
+                            <div>
+                                <span class="catalog-offers__info__first">@element.Amount</span>
+                                <span class="catalog-offers__info__second">Количество</span>
+                            </div>
+                            <div>
+                                <span class="catalog-offers__info__first">@monthArr[element.Month], @element.Year</span>
+                                <span class="catalog-offers__info__second">Срок годности</span>
+                            </div>
+                        </div>
+                        <button class="catalog-offers__button" type="submit">Подробнее</button>
+                    </div>
+                }
+                @* <div class="catalog-offers__item">
                     <img src="img/capsules.png" alt="capsules foto">
                     <div class="catalog-offers__title">
                         <h1 class="catalog-offers__title__big">Нурофен</h1>
@@ -196,7 +227,7 @@
                         </div>
                     </div>
                     <button class="catalog-offers__button" type="submit">Подробнее</button>
-                </div>
+                </div> *@
             </div>
 
         </div>
