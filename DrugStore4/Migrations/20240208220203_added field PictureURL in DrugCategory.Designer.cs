@@ -4,6 +4,7 @@ using DrugStore4.DrugStoreDb;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DrugStore4.Migrations
 {
     [DbContext(typeof(DrugStoreDbContext))]
-    partial class DrugStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240208220203_added field PictureURL in DrugCategory")]
+    partial class addedfieldPictureURLinDrugCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +37,7 @@ namespace DrugStore4.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Category")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -56,7 +59,7 @@ namespace DrugStore4.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TypeId")
+                    b.Property<int>("Type")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -67,10 +70,6 @@ namespace DrugStore4.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("TypeId");
 
                     b.HasIndex("UserId");
 
@@ -315,27 +314,11 @@ namespace DrugStore4.Migrations
 
             modelBuilder.Entity("DrugStore4.DrugStoreDb.Ad", b =>
                 {
-                    b.HasOne("DrugStore4.DrugStoreDb.DrugCategory", "DrugCategory")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DrugStore4.DrugStoreDb.DrugType", "DrugType")
-                        .WithMany()
-                        .HasForeignKey("TypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("DrugStore4.DrugStoreDb.User", "User")
                         .WithMany("Ads")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("DrugCategory");
-
-                    b.Navigation("DrugType");
 
                     b.Navigation("User");
                 });

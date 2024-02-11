@@ -21,6 +21,9 @@ namespace DrugStore4.DrugStoreDb
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Ad>().HasOne(ad => ad.User).WithMany(u => u.Ads).HasForeignKey(a => a.UserId);
+            builder.Entity<Ad>().HasOne(ad => ad.DrugType).WithMany().HasForeignKey(ad => ad.TypeId);
+            builder.Entity<Ad>().HasOne(ad => ad.DrugCategory).WithMany().HasForeignKey(ad => ad.CategoryId);
+
             base.OnModelCreating(builder);
         }
     }

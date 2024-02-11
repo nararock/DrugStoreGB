@@ -25,8 +25,8 @@ namespace DrugStore4.Classes
                 Month = adModel.Month,
                 Year = adModel.Year,
                 Amount = adModel.Amount,
-                Category = adModel.Category,
-                Type = adModel.Type,
+                CategoryId = adModel.Category,
+                TypeId = adModel.Type,
                 UserId = userId
             };
 
