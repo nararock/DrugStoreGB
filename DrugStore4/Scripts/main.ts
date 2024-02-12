@@ -1,6 +1,10 @@
 ﻿//Registration
 function registrateUser(): void {
+    let nickname = document.querySelector<HTMLInputElement>(".registration-field__div input[name = 'Nickname']").value;
     let email = document.querySelector<HTMLInputElement>(".registration-field__div input[name = 'Email']").value;
+    let telephone = document.querySelector<HTMLInputElement>(".registration-field__div input[name = 'Telephone']").value;
+    let city = document.querySelector<HTMLInputElement>(".registration-field__div input[name = 'City']").value;
+    let district = document.querySelector<HTMLInputElement>(".registration-field__div input[name = 'District']").value;
     let password = document.querySelector<HTMLInputElement>(".registration-field__div input[name = 'Password']").value;
     let doublePassword = document.querySelector<HTMLInputElement>(".registration-field__div input[name = 'DoublePassword']").value;
 
@@ -8,6 +12,10 @@ function registrateUser(): void {
         method: 'POST',
         body: JSON.stringify({
             Email: email,
+            Nickname: nickname,
+            Telephone: telephone,
+            City: city,
+            District: district,
             Password: password,
             DoublePassword: doublePassword
         }),

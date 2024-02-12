@@ -48,8 +48,12 @@ namespace DrugStore4.Controllers
                 }
                 DrugStoreDb.User userIdentity = new DrugStoreDb.User()
                 {
+                    Nickname = registrationModel.Nickname,
                     UserName = registrationModel.Email,
                     Email = registrationModel.Email,
+                    PhoneNumber = registrationModel.Telephone,
+                    City = registrationModel.City,
+                    District = registrationModel.District,
                     EmailConfirmed = true
                 };
                 var answer = await _userManager.CreateAsync(userIdentity, registrationModel.Password);
