@@ -4,6 +4,7 @@ namespace DrugStore4.Models
 {
     public class CatalogModel
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Type { get; set; }
         public string Category { get; set; }

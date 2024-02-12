@@ -73,7 +73,7 @@
             <div class="catalog-offers__block">
                 @foreach(var element in Model)
                 {
-                    <div class="catalog-offers__item">
+                    <div data-id="@element.Id" class="catalog-offers__item">
                         <img src="/img/@element.PictureURL" alt="capsules foto">
                         <div class="catalog-offers__title">
                             <h1 class="catalog-offers__title__big">@element.Title</h1>
