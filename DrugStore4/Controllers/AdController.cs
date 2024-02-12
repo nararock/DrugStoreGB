@@ -37,6 +37,13 @@ namespace DrugStore4.Controllers
             result.Message = "";
             return new JsonResult(result);
         }
+
+        public IActionResult Show(int id)
+        {
+            AdHelper adHelper = new AdHelper();
+            AdInfoModel adInfo = adHelper.getAd(_dbContext, id);
+            return View(adInfo);
+        }
         
     }
 }

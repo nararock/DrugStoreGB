@@ -1,12 +1,20 @@
 //Registration
 function registrateUser() {
+    var nickname = document.querySelector(".registration-field__div input[name = 'Nickname']").value;
     var email = document.querySelector(".registration-field__div input[name = 'Email']").value;
+    var telephone = document.querySelector(".registration-field__div input[name = 'Telephone']").value;
+    var city = document.querySelector(".registration-field__div input[name = 'City']").value;
+    var district = document.querySelector(".registration-field__div input[name = 'District']").value;
     var password = document.querySelector(".registration-field__div input[name = 'Password']").value;
     var doublePassword = document.querySelector(".registration-field__div input[name = 'DoublePassword']").value;
     fetch('/Account/Registrate', {
         method: 'POST',
         body: JSON.stringify({
             Email: email,
+            Nickname: nickname,
+            Telephone: telephone,
+            City: city,
+            District: district,
             Password: password,
             DoublePassword: doublePassword
         }),
@@ -99,5 +107,10 @@ function createAd() {
             window.location.replace('/Profile/Index');
         }
     });
+}
+//DrugInfo Show.cshtml
+function goToDrugInfo(event) {
+    var id = event.target.parentElement.dataset.id;
+    window.location.replace('/Ad/Show/' + id);
 }
 //# sourceMappingURL=main.js.map

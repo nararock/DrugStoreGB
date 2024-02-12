@@ -114,3 +114,9 @@ function createAd() {
             }
         })
 }
+
+//DrugInfo Show.cshtml
+function goToDrugInfo(event) {
+    let id = event.target.parentElement.dataset.id;
+    window.location.replace('/Ad/Show/' + id);
+}

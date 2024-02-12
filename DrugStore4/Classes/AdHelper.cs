@@ -33,5 +33,26 @@ namespace DrugStore4.Classes
             dbContext.Ads.Add(ad);
             dbContext.SaveChanges();
         }
+
+        public AdInfoModel getAd(DrugStoreDbContext dbContext, int id)
+        {
+            List<AdInfoModel> adInfo = dbContext.Ads.Where(i => i.Id == id).Select(u => new AdInfoModel
+            {
+                Title = u.Title,
+                Description = u.Description,
+                Manufacturer = u.Manufacturer,
+                Dose = u.Dose,
+                Month = u.Month,
+                Year = u.Year,
+                Amount = u.Amount,
+                Type = u.DrugType.Name,
+                Category = u.DrugCategory.Name,
+                Nickname = u.User.Nickname,
+                UserPhone = u.User.PhoneNumber,
+                City = u.User.City,
+                District = u.User.District
+            }).ToList();
+            return adInfo[0];
+        }
     }
 }
