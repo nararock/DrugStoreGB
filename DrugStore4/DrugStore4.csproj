@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Content Remove="sassconfig.json" />
+    <Content Remove="wwwroot\scss\_profileStyle.scss" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,7 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\scss\_profileStyle.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="sassconfig.json" />
+    <None Include="wwwroot\scss\_profileStyle.scss" />
   </ItemGroup>
 
   <ItemGroup>

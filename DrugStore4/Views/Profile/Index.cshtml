@@ -1,4 +1,73 @@
-﻿<div class="account">
-    <div class="breadcrumbs">Главная / Личный кабинет</div>
-    <h1>Личный кабинет</h1>
+﻿@using DrugStore4.Models
+@model ProfileModel
+
+<div class="account">
+    <div class="account center">
+        <h1 class="account-header"><span class="account-header__word">Личный</span> кабинет</h1>
+        <div class="container">
+            <div class="tab">
+                <div class="tab-content" id="content-1">
+                    <div class="tab-profile">
+                        <div class="tab-profile__left">
+                            <div class="tab-profile__div">Имя:<input type="text" name="Nickname" value="@Model.Nickname" readonly></div>
+                            <div class="tab-profile__div">Email:<input type="text" name="Email" value="@Model.Email" readonly></div>
+                            <div class="tab-profile__div">Телефон:<input type="text" name="Telephone" value="@Model.Telephone" readonly></div>
+                        </div>
+                        <div class="tab-profile__left">
+                            <div class="tab-profile__div">Город:<input type="text" name="City" value="@Model.City" readonly></div>
+                            <div class="tab-profile__div">Район:<input type="text" name="District" value="@Model.District" readonly></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-content" id="content-2">
+                    <div class="tab-ad">
+                        @if (Model.ads.Count > 0)
+                        {
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Название</th>
+                                        <th>Тип</th>
+                                        <th>Доза</th>
+                                        <th>Количество</th>
+                                        <th>Срок годности</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = 0; i < Model.ads.Count; i++)
+                                    {
+                                        <tr>
+                                            <td>@Model.ads[i].Title</td>
+                                            <td>@Model.ads[i].Category</td>
+                                            <td>@Model.ads[i].Dose</td>
+                                            <td>@Model.ads[i].Amount</td>
+                                            <td>@Model.ads[i].Month, @Model.ads[i].Year</td>
+                                            <td><img src="/img/btn.svg" alt="button delete"></td>
+                                        </tr>
+                                    }
+                                    
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <div>У вас нет пока что ни одного размещенного объявления.</div>
+                        }
+                    </div>
+                    <div class="tab-content__button">
+                        <button type="button">Перейти в каталог</button>
+                    </div>
+                </div>
+                <div class="tab-nav">
+                    <input checked id="tab-btn-1" name="tab-btn" type="radio" value="">
+                    <label for="tab-btn-1">Мои данные</label>
+                    <input id="tab-btn-2" name="tab-btn" type="radio" value="">
+                    <label for="tab-btn-2">Мои объявления</label>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
