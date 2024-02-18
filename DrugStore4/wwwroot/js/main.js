@@ -113,4 +113,20 @@ function goToDrugInfo(event) {
     var id = event.target.parentElement.dataset.id;
     window.location.replace('/Ad/Show/' + id);
 }
+//Profile
+function deleteAd(event) {
+    var idAd = event.target.dataset.id;
+    fetch('/Profile/DeleteAd/' + idAd)
+        .then(function (response) { return response.json(); })
+        .then(function (answer) {
+        if (answer.Code == 1) {
+            alert("Возникла ошибка при удалении.");
+        }
+        else {
+            var elementTr = event.target.parentElement.parentElement;
+            var elementParent = elementTr.parentElement;
+            elementParent.removeChild(elementTr);
+        }
+    });
+}
 //# sourceMappingURL=main.js.map

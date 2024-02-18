@@ -44,7 +44,7 @@
                                             <td>@Model.ads[i].Dose</td>
                                             <td>@Model.ads[i].Amount</td>
                                             <td>@Model.ads[i].Month, @Model.ads[i].Year</td>
-                                            <td><img src="/img/btn.svg" alt="button delete"></td>
+                                            <td><img class="td-button" data-id="@Model.ads[i].Id" src="/img/btn.svg" alt="button delete" onclick="deleteAd(event)"></td>
                                         </tr>
                                     }
                                     
@@ -53,7 +53,7 @@
                         }
                         else
                         {
-                            <div>У вас нет пока что ни одного размещенного объявления.</div>
+                            <div>У вас нет ни одного размещенного объявления.</div>
                         }
                     </div>
                     <div class="tab-content__button">

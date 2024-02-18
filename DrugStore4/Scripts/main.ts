@@ -120,3 +120,21 @@ function goToDrugInfo(event) {
     let id = event.target.parentElement.dataset.id;
     window.location.replace('/Ad/Show/' + id);
 }
+
+//Profile
+function deleteAd(event) {
+    let idAd = event.target.dataset.id;    
+
+    fetch('/Profile/DeleteAd/' + idAd)
+        .then((response) => response.json())
+        .then(answer => {
+            if (answer.Code == 1) {
+                alert("Возникла ошибка при удалении.")
+            }
+            else {
+                let elementTr = event.target.parentElement.parentElement;
+                let elementParent = elementTr.parentElement;
+                elementParent.removeChild(elementTr);
+            }
+        })
+}

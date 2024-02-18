@@ -1,5 +1,6 @@
 ﻿using DrugStore4.DrugStoreDb;
 using DrugStore4.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DrugStore4.Classes
 {
@@ -15,6 +16,7 @@ namespace DrugStore4.Classes
                 District = a.District,
                 Telephone = a.PhoneNumber,
                 ads = a.Ads.Select(a => new CatalogModel {
+                    Id = a.Id,
                     Title = a.Title,
                     Type = a.DrugType.Name,
                     Category = a.DrugCategory.Name,
@@ -28,5 +30,17 @@ namespace DrugStore4.Classes
              }).ToList();
             return profileModels[0];
         }
-    }
+
+        public bool DeleteAd(DrugStoreDbContext drugStoreDb, string userName, int idAd)
+        {
+            var ad = drugStoreDb.Ads.Include(a=>a.User).SingleOrDefault(a=>a.Id == idAd);
+            if (ad.User.UserName == userName)
+            {
+                drugStoreDb.Ads.Remove(ad);
+                drugStoreDb.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+    }    
 }
