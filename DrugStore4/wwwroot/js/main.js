@@ -108,10 +108,17 @@ function createAd() {
         }
     });
 }
-//DrugInfo Show.cshtml
+//DrugInfoPage Show.cshtml
 function goToDrugInfo(event) {
     var id = event.target.parentElement.dataset.id;
     window.location.replace('/Ad/Show/' + id);
+}
+//CatalogPage
+function changePage(event) {
+    var page = event.target.textContent;
+    fetch('/Catalog/Index?page=' + page)
+        .then(function (response) { return response.json(); });
+    window.location.replace('/Catalog/Index?page=' + page);
 }
 //Profile
 function deleteAd(event) {

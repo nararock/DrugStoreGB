@@ -115,10 +115,18 @@ function createAd() {
         })
 }
 
-//DrugInfo Show.cshtml
+//DrugInfoPage Show.cshtml
 function goToDrugInfo(event) {
     let id = event.target.parentElement.dataset.id;
     window.location.replace('/Ad/Show/' + id);
+}
+
+//CatalogPage
+function changePage(event) {
+    let page = event.target.textContent;
+    fetch('/Catalog/Index?page=' + page)
+        .then((response) => response.json())
+    window.location.replace('/Catalog/Index?page=' + page);
 }
 
 //Profile

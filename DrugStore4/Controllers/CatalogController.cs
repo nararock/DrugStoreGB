@@ -13,11 +13,12 @@ namespace DrugStore4.Controllers
             _dbContext = dbContext;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string page = "1")
         {
+            int numPage = int.Parse(page);
             CatalogHelper catalogHelper = new CatalogHelper();
-            List<CatalogModel> adModels = catalogHelper.getAds(_dbContext, 1);
-            return View(adModels);
+            CommonCatalogModel commonModel = catalogHelper.getCommonCatalogModel(_dbContext, numPage);
+            return View(commonModel);
         }
     }
 }

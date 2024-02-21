@@ -1,5 +1,5 @@
 ﻿@using DrugStore4.Models;
-@model List<CatalogModel>;
+@model CommonCatalogModel;
 @{
     string[] monthArr = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
 }
@@ -71,7 +71,7 @@
     <div class="catalog-content">
         <div class="catalog-offers">
             <div class="catalog-offers__block">
-                @foreach(var element in Model)
+                @foreach(var element in Model.catalogModels)
                 {
                     <div data-id="@element.Id" class="catalog-offers__item">
                         <img src="/img/@element.PictureURL" alt="capsules foto">
@@ -97,7 +97,45 @@
                     </div>
                 }
             </div>
-
+            <div class="catalog-offers__line"></div>
+            
+            <div class="catalog-offers__pagination">
+                @if (Model.AmountPage <= 6)
+                {
+                    @for(int i = 0; i < Model.AmountPage; i++)
+                    {
+                        <button type="button" onclick="changePage(event)">@(i + 1)</button>
+                    }
+                }
+                else if (@Model.NumberPage > 5 && @Model.NumberPage < (Model.AmountPage - 4))
+                {
+                    <button type="button" onclick="changePage(event)">1</button>
+                    <span> ... </span>
+                    <button type="button" onclick="changePage(event)">@(Model.NumberPage - 1)</button>
+                    <button type="button" onclick="changePage(event)">@Model.NumberPage</button>
+                    <button type="button" onclick="changePage(event)">@(Model.NumberPage + 1)</button>
+                    <span> ... </span>
+                    <button type="button" onclick="changePage(event)">@Model.AmountPage</button>
+                }
+                else if (@Model.NumberPage <= 5)
+                {
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        <button type="button" onclick="changePage(event)">@(i + 1)</button>
+                    }
+                    <span> ... </span>
+                    <button type="button" onclick="changePage(event)">@Model.AmountPage</button>
+                }
+                else
+                {
+                    <button onclick="changePage(event)">1</button>
+                    <span> ... </span>
+                    @for (int i = (@Model.AmountPage - 4); i <= @Model.AmountPage; i++)
+                    {
+                        <button type="button" onclick="changePage(event)">@i</button>
+                    }
+                }
+            </div>
         </div>
         <div class="catalog-filter">
             <div></div>
