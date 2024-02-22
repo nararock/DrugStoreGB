@@ -161,6 +161,12 @@
                 @include font($color, $size, 400, 14px);
                 text-decoration: none;
                 margin-bottom: 15px;
+
+                &__selected {
+                    @include font(#60B021, $size, 700, 14px);
+                    text-decoration: none;
+                    margin-bottom: 15px;
+                }
             }
 
             &__item:hover {

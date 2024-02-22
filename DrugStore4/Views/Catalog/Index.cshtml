@@ -71,7 +71,7 @@
     <div class="catalog-content">
         <div class="catalog-offers">
             <div class="catalog-offers__block">
-                @foreach(var element in Model.catalogModels)
+                @foreach(var element in Model.CatalogModels)
                 {
                     <div data-id="@element.Id" class="catalog-offers__item">
                         <img src="/img/@element.PictureURL" alt="capsules foto">
@@ -140,32 +140,19 @@
         <div class="catalog-filter">
             <div></div>
             <h2 class="catalog-filter__title">Категории</h2>
-            <a href="" class="catalog-filter__item">Акушерство, гинекология</a>
-            <a href="" class="catalog-filter__item">Аллергия</a>
-            <a href="" class="catalog-filter__item">Антибиотики</a>
-            <a href="" class="catalog-filter__item">Болезни крови</a>
-            <a href="" class="catalog-filter__item">Боль, температура</a>
-            <a href="" class="catalog-filter__item">Глаза</a>
-            <a href="" class="catalog-filter__item">Гомеопатия</a>
-            <a href="" class="catalog-filter__item">Детское здоровье</a>
-            <a href="" class="catalog-filter__item">Диабет</a>
-            <a href="" class="catalog-filter__item">Дыхательная система</a>
-            <a href="" class="catalog-filter__item">Желудок, кишечник, печень</a>
-            <a href="" class="catalog-filter__item">Зубы и рот</a>
-            <a href="" class="catalog-filter__item">Иммунная система</a>
-            <a href="" class="catalog-filter__item">Кожа</a>
-            <a href="" class="catalog-filter__item">Мочеполовая система</a>
-            <a href="" class="catalog-filter__item">Нарушения обмена веществ</a>
-            <a href="" class="catalog-filter__item">Неврология, психиатрия</a>
-            <a href="" class="catalog-filter__item">Обеззараживающие средства</a>
-            <a href="" class="catalog-filter__item">Онкология</a>
-            <a href="" class="catalog-filter__item">Отравления</a>
-            <a href="" class="catalog-filter__item">Противовирусные средства</a>
-            <a href="" class="catalog-filter__item">Противогрибковые средства</a>
-            <a href="" class="catalog-filter__item">Разное</a>
-            <a href="" class="catalog-filter__item">Сердечно-сосудистые</a>
-            <a href="" class="catalog-filter__item">Ухо, горло, нос</a>
-            <a href="" class="catalog-filter__item">Эндокринология</a>
+            @foreach(var type in Model.Types)
+            {
+                @if (Model.SelectedTypeId != type.Id)
+                {
+                    <a href="/Catalog/Index?page=1&type=@type.Id" class="catalog-filter__item">@type.Name</a>
+                    
+                }
+                else
+                {
+                    <a href="/Catalog/Index?page=1" class="catalog-filter__item__selected">@type.Name  &#10799;</a>
+                   
+                }                
+            }
         </div>
     </div>
 </div>
