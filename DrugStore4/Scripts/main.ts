@@ -40,7 +40,6 @@ function registrateUser(): void {
         })
 }
 
-
 function clearError() {
     let error = document.querySelector(".registration-error");
     error.textContent = "";
@@ -127,6 +126,16 @@ function changePage(event) {
     fetch('/Catalog/Index?page=' + page)
         .then((response) => response.json())
     window.location.replace('/Catalog/Index?page=' + page);
+}
+
+function filterData(event) {
+    let indexOption = event.target.options.selectedIndex;
+    let idOption = event.target.options[indexOption].dataset.value;
+    let typeSelect = document.querySelector(".catalog-filter__item__selected") as HTMLElement;
+    let IdType = typeSelect != null ? typeSelect.dataset.id : "";
+    fetch('/Catalog/Index?type=' + IdType + '&filter=' + idOption)
+        .then(response => response.json)
+    window.location.replace('/Catalog/Index?type=' + IdType + '&filter=' + idOption);    
 }
 
 //Profile

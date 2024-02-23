@@ -120,6 +120,15 @@ function changePage(event) {
         .then(function (response) { return response.json(); });
     window.location.replace('/Catalog/Index?page=' + page);
 }
+function filterData(event) {
+    var indexOption = event.target.options.selectedIndex;
+    var idOption = event.target.options[indexOption].dataset.value;
+    var typeSelect = document.querySelector(".catalog-filter__item__selected");
+    var IdType = typeSelect != null ? typeSelect.dataset.id : "";
+    fetch('/Catalog/Index?type=' + IdType + '&filter=' + idOption)
+        .then(function (response) { return response.json; });
+    window.location.replace('/Catalog/Index?type=' + IdType + '&filter=' + idOption);
+}
 //Profile
 function deleteAd(event) {
     var idAd = event.target.dataset.id;

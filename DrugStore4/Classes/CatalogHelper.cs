@@ -70,9 +70,25 @@ namespace DrugStore4.Classes
             return types;
         }
 
-        public CommonCatalogModel getCommonCatalogModel(DrugStoreDbContext dbContext, int page, string type)
+        public List<CatalogModel> filterData(List<CatalogModel> catalogModels, int filter)
+        {
+            List<CatalogModel> catalogModelsOrder = [];
+            if (filter == 0)
+            {
+                catalogModelsOrder = catalogModels.OrderBy(c => c.Id).ToList();
+            }
+            else
+            {
+                catalogModelsOrder = catalogModels.OrderByDescending(c => c.Id).ToList();
+            }
+            return catalogModelsOrder;
+        }
+
+        public CommonCatalogModel getCommonCatalogModel(DrugStoreDbContext dbContext, int page, string type, string filter)
         {
             List<CatalogModel> catalogModels = getAds(dbContext, page, type);
+            int IdFilter = int.Parse(filter);
+            catalogModels = filterData(catalogModels, IdFilter);
             int amount = getAmountPage(dbContext, type);
             List<DrugType> types = getListType(dbContext);
             CommonCatalogModel commonModel = new CommonCatalogModel
@@ -81,6 +97,7 @@ namespace DrugStore4.Classes
                 CatalogModels = catalogModels,
                 Types = types,
                 SelectedTypeId = int.TryParse(type, out int numType)?numType : 0,
+                SelectedFilterId = IdFilter,
                 AmountPage = amount
             };
             return commonModel;

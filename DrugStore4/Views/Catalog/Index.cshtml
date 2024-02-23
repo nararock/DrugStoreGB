@@ -2,6 +2,7 @@
 @model CommonCatalogModel;
 @{
     string[] monthArr = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
+    Tuple<int, string>[] options = { new Tuple<int, string>(0, "Сначала новые"), new Tuple<int, string>(1, "Сначала старые") };
 }
 
 <div class="catalog center">
@@ -62,10 +63,15 @@
         </div>
     </div>
     <div class="catalog-sort">
-        <select name="" id="">
-            <option value="">По названию</option>
-            <option value="">По дате размещения</option>
-            <option value="">По сроку годности</option>
+        <select onchange="filterData(event)">
+            <option data-value="@options[Model.SelectedFilterId].Item1">@options[Model.SelectedFilterId].Item2</option>
+            @for (int i = 0; i < options.Length; i++)
+            {
+                if (i != options[Model.SelectedFilterId].Item1)
+                {
+                    <option data-value="@options[i].Item1">@options[i].Item2</option>
+                }
+            }            
         </select>
     </div>
     <div class="catalog-content">
@@ -149,7 +155,7 @@
                 }
                 else
                 {
-                    <a href="/Catalog/Index?page=1" class="catalog-filter__item__selected">@type.Name  &#10799;</a>
+                    <a href="/Catalog/Index?page=1" data-id=@type.Id class="catalog-filter__item__selected">@type.Name  &#10799;</a>
                    
                 }                
             }
