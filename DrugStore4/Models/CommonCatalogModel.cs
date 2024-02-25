@@ -8,6 +8,7 @@ namespace DrugStore4.Models
         public List<DrugType> Types;
         public int SelectedTypeId {  get; set; }
         public int SelectedFilterId { get; set; }
+        public string SearchDrug {  get; set; }
         public int AmountPage {  get; set; } 
         public int NumberPage { get; set; }
     }

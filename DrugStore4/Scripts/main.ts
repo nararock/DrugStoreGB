@@ -131,11 +131,20 @@ function changePage(event) {
 function filterData(event) {
     let indexOption = event.target.options.selectedIndex;
     let idOption = event.target.options[indexOption].dataset.value;
+    let searchDrug = event.target.options[indexOption].dataset.search;
     let typeSelect = document.querySelector(".catalog-filter__item__selected") as HTMLElement;
     let IdType = typeSelect != null ? typeSelect.dataset.id : "";
-    fetch('/Catalog/Index?type=' + IdType + '&filter=' + idOption)
+    fetch('/Catalog/Index?type=' + IdType + '&filter=' + idOption + '&search=' + searchDrug)
         .then(response => response.json)
-    window.location.replace('/Catalog/Index?type=' + IdType + '&filter=' + idOption);    
+    window.location.replace('/Catalog/Index?type=' + IdType + '&filter=' + idOption + '&search=' + searchDrug);    
+}
+
+function searchDrug() {
+    let input = document.querySelector('.header-search__input') as HTMLInputElement;
+    let drug = input.value;
+    fetch('/Catalog/Index?search=' + drug)
+        .then(response => response.json)
+    window.location.replace('/Catalog/Index?search=' + drug);
 }
 
 //Profile

@@ -6,7 +6,14 @@
 }
 
 <div class="catalog center">
-    <h1 class="catalog-title">Лекарственные средства</h1>
+    @if (Model.SearchDrug == "")
+    {
+        <h1 class="catalog-title">Лекарственные средства</h1>
+    }
+    else
+    {
+        <h1 class="catalog-title">@Model.SearchDrug</h1>
+    }
     <h2 class="catalog-subtitle">Популярные категории лекарств</h2>
     <div class="catalog-categories">
         <div class="catalog-categories__item">
@@ -64,14 +71,14 @@
     </div>
     <div class="catalog-sort">
         <select onchange="filterData(event)">
-            <option data-value="@options[Model.SelectedFilterId].Item1">@options[Model.SelectedFilterId].Item2</option>
+            <option data-search="@Model.SearchDrug" data-value="@options[Model.SelectedFilterId].Item1">@options[Model.SelectedFilterId].Item2</option>
             @for (int i = 0; i < options.Length; i++)
             {
                 if (i != options[Model.SelectedFilterId].Item1)
                 {
-                    <option data-value="@options[i].Item1">@options[i].Item2</option>
+                    <option data-search="@Model.SearchDrug" data-value="@options[i].Item1">@options[i].Item2</option>
                 }
-            }            
+            }
         </select>
     </div>
     <div class="catalog-content">

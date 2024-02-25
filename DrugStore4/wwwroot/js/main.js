@@ -123,11 +123,19 @@ function changePage(event) {
 function filterData(event) {
     var indexOption = event.target.options.selectedIndex;
     var idOption = event.target.options[indexOption].dataset.value;
+    var searchDrug = event.target.options[indexOption].dataset.search;
     var typeSelect = document.querySelector(".catalog-filter__item__selected");
     var IdType = typeSelect != null ? typeSelect.dataset.id : "";
-    fetch('/Catalog/Index?type=' + IdType + '&filter=' + idOption)
+    fetch('/Catalog/Index?type=' + IdType + '&filter=' + idOption + '&search=' + searchDrug)
         .then(function (response) { return response.json; });
-    window.location.replace('/Catalog/Index?type=' + IdType + '&filter=' + idOption);
+    window.location.replace('/Catalog/Index?type=' + IdType + '&filter=' + idOption + '&search=' + searchDrug);
+}
+function searchDrug() {
+    var input = document.querySelector('.header-search__input');
+    var drug = input.value;
+    fetch('/Catalog/Index?search=' + drug)
+        .then(function (response) { return response.json; });
+    window.location.replace('/Catalog/Index?search=' + drug);
 }
 //Profile
 function deleteAd(event) {

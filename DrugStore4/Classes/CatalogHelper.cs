@@ -6,63 +6,32 @@ namespace DrugStore4.Classes
     public class CatalogHelper
     {
         private int blockNumber = 9;
-        public List<CatalogModel> getAds(DrugStoreDbContext dbContext, int page, string type)
+        public IQueryable<Ad> getAds(DrugStoreDbContext dbContext, string type, int filter, string query)
         {
             List<CatalogModel> adModels = [];
-            bool typeBool = int.TryParse(type, out int numType);
-            if (!typeBool)
+            var catalog = dbContext.Ads as IQueryable<Ad>;
+            //query поиск 
+            if (query != "")
             {
-                adModels = dbContext.Ads.Skip((page - 1) * blockNumber).Take(blockNumber)
-                                                                   .Select(a => new CatalogModel {
-                                                                                              Id = a.Id,
-                                                                                              Title = a.Title,
-                                                                                              Type = a.DrugType.Name,
-                                                                                              Category = a.DrugCategory.Name,
-                                                                                              PictureURL = a.DrugCategory.PictureURL,
-                                                                                              Dose = a.Dose,
-                                                                                              Amount = a.Amount,
-                                                                                              Month = a.Month,
-                                                                                              Year = a.Year,
-                                                                                              Manufacturer = a.Manufacturer,
-                                                                                              Description = a.Description,
-                                                                                              })
-                                                                   .ToList();
-            }            
-            else
-            {
-                adModels = dbContext.Ads.Skip((page - 1) * blockNumber).Take(blockNumber).Where(a => a.DrugType.Id == numType)
-                                                                   .Select(a => new CatalogModel
-                                                                   {
-                                                                       Id = a.Id,
-                                                                       Title = a.Title,
-                                                                       Type = a.DrugType.Name,
-                                                                       Category = a.DrugCategory.Name,
-                                                                       PictureURL = a.DrugCategory.PictureURL,
-                                                                       Dose = a.Dose,
-                                                                       Amount = a.Amount,
-                                                                       Month = a.Month,
-                                                                       Year = a.Year,
-                                                                       Manufacturer = a.Manufacturer,
-                                                                       Description = a.Description,
-                                                                   })
-                                                                   .ToList();
+                catalog = catalog.Where(c => c.Title == query);
             }
-            return adModels;
-        }
-        public int getAmountPage(DrugStoreDbContext dbContext, string type)
-        {
-            bool typeBool = int.TryParse(type, out int numType);
-            int amount = 0;
-            if (!typeBool)
+            //filter применение фильтра по дате
+            if (filter == 0)
             {
-                amount = (dbContext.Ads.Count() / blockNumber);
+                catalog = catalog.OrderBy(c => c.Id);
             }
             else
             {
-                amount = (dbContext.Ads.Where(a => a.DrugType.Id == numType).Count()/blockNumber);
+                catalog = catalog.OrderByDescending(c => c.Id);
             }
-            return amount;
-        }
+            //type
+            if (int.TryParse(type, out int numType))
+            {
+                catalog = catalog.Where(a => a.DrugType.Id == numType);
+            }
+           
+            return catalog;
+        }                
 
         public List<DrugType> getListType(DrugStoreDbContext dbContext)
         {
@@ -70,34 +39,40 @@ namespace DrugStore4.Classes
             return types;
         }
 
-        public List<CatalogModel> filterData(List<CatalogModel> catalogModels, int filter)
-        {
-            List<CatalogModel> catalogModelsOrder = [];
-            if (filter == 0)
+        public List<CatalogModel> GetCatalogModelOnCurrentPage(IQueryable<Ad> ads, int page) {
+
+            List<CatalogModel> catalogModelsPage = ads.Skip((page - 1) * blockNumber).Take(blockNumber).Select(a => new CatalogModel
             {
-                catalogModelsOrder = catalogModels.OrderBy(c => c.Id).ToList();
-            }
-            else
-            {
-                catalogModelsOrder = catalogModels.OrderByDescending(c => c.Id).ToList();
-            }
-            return catalogModelsOrder;
+                Id = a.Id,
+                Title = a.Title,
+                Type = a.DrugType.Name,
+                Category = a.DrugCategory.Name,
+                PictureURL = a.DrugCategory.PictureURL,
+                Dose = a.Dose,
+                Amount = a.Amount,
+                Month = a.Month,
+                Year = a.Year,
+                Manufacturer = a.Manufacturer,
+                Description = a.Description,
+            }).ToList();
+            return catalogModelsPage;
         }
 
-        public CommonCatalogModel getCommonCatalogModel(DrugStoreDbContext dbContext, int page, string type, string filter)
+        public CommonCatalogModel getCommonCatalogModel(DrugStoreDbContext dbContext, int page, string type, string filter, string searchDrug)
         {
-            List<CatalogModel> catalogModels = getAds(dbContext, page, type);
             int IdFilter = int.Parse(filter);
-            catalogModels = filterData(catalogModels, IdFilter);
-            int amount = getAmountPage(dbContext, type);
+            IQueryable<Ad> catalogModels = getAds(dbContext, type, IdFilter, searchDrug);           
+            int amount = catalogModels.Count() / blockNumber;
+            List<CatalogModel> catalogModelsPage = GetCatalogModelOnCurrentPage(catalogModels, page);
             List<DrugType> types = getListType(dbContext);
             CommonCatalogModel commonModel = new CommonCatalogModel
             {
                 NumberPage = page,
-                CatalogModels = catalogModels,
+                CatalogModels = catalogModelsPage,
                 Types = types,
                 SelectedTypeId = int.TryParse(type, out int numType)?numType : 0,
                 SelectedFilterId = IdFilter,
+                SearchDrug = searchDrug,
                 AmountPage = amount
             };
             return commonModel;
