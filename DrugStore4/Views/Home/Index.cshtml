@@ -1,4 +1,7 @@
-﻿<div class="cover">
+﻿@using DrugStore4.Models;
+@model CommonCatalogModel;
+
+<div class="cover">
     <img class="cover-image" src="img/mainFoto_pills.jpg" alt="">
     <div class="cover-filter"></div>
 </div>
@@ -24,140 +27,34 @@
 </div>
 <div class="offers center">
     <h1 class="offers-title">Недавно размещенные</h1>
+    
     <div class="offers-block">
-        <div class="offers-block__item">
-            <img src="img/capsules.png" alt="capsules foto">
-            <div class="offers-block__title">
-                <h1 class="offers-block__title__big">Нурофен</h1>
-                <h3 class="offers-block__title__small">Касулы</h3>
-            </div>
-            <div class="offers-block__info">
-                <div>
-                    <span class="offers-block__info__first">200мг</span>
-                    <span class="offers-block__info__second">Дозировка</span>
+        @for (int i = 0; i < 6; i++)
+        {
+            <div data-id="@Model.CatalogModels[i].Id" class="offers-block__item">
+                <img src="/img/@Model.CatalogModels[i].PictureURL">
+                <div class="offers-block__title">
+                    <h1 class="offers-block__title__big">@Model.CatalogModels[i].Title</h1>
+                    <h3 class="offers-block__title__small">@Model.CatalogModels[i].Category</h3>
                 </div>
-                <div>
-                    <span class="offers-block__info__first">10шт.</span>
-                    <span class="offers-block__info__second">Количество</span>
+                <div class="offers-block__info">
+                    <div>
+                        <span class="offers-block__info__first">@Model.CatalogModels[i].Dose</span>
+                        <span class="offers-block__info__second">Дозировка</span>
+                    </div>
+                    <div>
+                        <span class="offers-block__info__first">@Model.CatalogModels[i].Amount</span>
+                        <span class="offers-block__info__second">Количество</span>
+                    </div>
+                    <div>
+                        <span class="offers-block__info__first">@Model.CatalogModels[i].Month, @Model.CatalogModels[i].Year</span>
+                        <span class="offers-block__info__second">Срок годности</span>
+                    </div>
                 </div>
-                <div>
-                    <span class="offers-block__info__first">20.09.2024</span>
-                    <span class="offers-block__info__second">Срок годности</span>
-                </div>
-            </div>
-            <button class="offers-block__button" type="submit">Подробнее</button>
+                <button class="offers-block__button" type="submit" onclick="goToDrugInfo(event)">Подробнее</button>
 
-        </div>
-        <div class="offers-block__item">
-            <img src="img/creme.png" alt="creme foto">
-            <div class="offers-block__title">
-                <h1 class="offers-block__title__big">Диклофенак</h1>
-                <h3 class="offers-block__title__small">Крем</h3>
             </div>
-            <div class="offers-block__info">
-                <div>
-                    <span class="offers-block__info__first">5%</span>
-                    <span class="offers-block__info__second">Дозировка</span>
-                </div>
-                <div>
-                    <span class="offers-block__info__first">40% от 100г</span>
-                    <span class="offers-block__info__second">Количество</span>
-                </div>
-                <div>
-                    <span class="offers-block__info__first">21.06.2025</span>
-                    <span class="offers-block__info__second">Срок годности</span>
-                </div>
-            </div>
-            <button class="offers-block__button" type="submit">Подробнее</button>
-        </div>
-        <div class="offers-block__item">
-            <img src="img/drops.png" alt="drops foto">
-            <div class="offers-block__title">
-                <h1 class="offers-block__title__big">Тауфон</h1>
-                <h3 class="offers-block__title__small">Капли</h3>
-            </div>
-            <div class="offers-block__info">
-                <div>
-                    <span class="offers-block__info__first">4%</span>
-                    <span class="offers-block__info__second">Дозировка</span>
-                </div>
-                <div>
-                    <span class="offers-block__info__first">50% от 50 мл</span>
-                    <span class="offers-block__info__second">Количество</span>
-                </div>
-                <div>
-                    <span class="offers-block__info__first">20.11.2023</span>
-                    <span class="offers-block__info__second">Срок годности</span>
-                </div>
-            </div>
-            <button class="offers-block__button" type="submit">Подробнее</button>
-        </div>
-        <div class="offers-block__item">
-            <img src="img/pills.png" alt="pills foto">
-            <div class="offers-block__title">
-                <h1 class="offers-block__title__big">Детралекс</h1>
-                <h3 class="offers-block__title__small">Таблетки</h3>
-            </div>
-            <div class="offers-block__info">
-                <div>
-                    <span class="offers-block__info__first">1000мг</span>
-                    <span class="offers-block__info__second">Дозировка</span>
-                </div>
-                <div>
-                    <span class="offers-block__info__first">20шт.</span>
-                    <span class="offers-block__info__second">Количество</span>
-                </div>
-                <div>
-                    <span class="offers-block__info__first">03.04.2025</span>
-                    <span class="offers-block__info__second">Срок годности</span>
-                </div>
-            </div>
-            <button class="offers-block__button" type="submit">Подробнее</button>
-        </div>
-        <div class="offers-block__item">
-            <img src="img/medicine.png" alt="medicine foto">
-            <div class="offers-block__title">
-                <h1 class="offers-block__title__big">Синекод</h1>
-                <h3 class="offers-block__title__small">Сироп</h3>
-            </div>
-            <div class="offers-block__info">
-                <div>
-                    <span class="offers-block__info__first">5мг/мл</span>
-                    <span class="offers-block__info__second">Дозировка</span>
-                </div>
-                <div>
-                    <span class="offers-block__info__first">30% от 20мл</span>
-                    <span class="offers-block__info__second">Количество</span>
-                </div>
-                <div>
-                    <span class="offers-block__info__first">23.01.2025</span>
-                    <span class="offers-block__info__second">Срок годности</span>
-                </div>
-            </div>
-            <button class="offers-block__button" type="submit">Подробнее</button>
-        </div>
-        <div class="offers-block__item">
-            <img src="img/spray.png" alt="spray foto">
-            <div class="offers-block__title">
-                <h1 class="offers-block__title__big">Люголь</h1>
-                <h3 class="offers-block__title__small">Спрей</h3>
-            </div>
-            <div class="offers-block__info">
-                <div>
-                    <span class="offers-block__info__first">1%</span>
-                    <span class="offers-block__info__second">Дозировка</span>
-                </div>
-                <div>
-                    <span class="offers-block__info__first">50мл</span>
-                    <span class="offers-block__info__second">Количество</span>
-                </div>
-                <div>
-                    <span class="offers-block__info__first">10.05.2024</span>
-                    <span class="offers-block__info__second">Срок годности</span>
-                </div>
-            </div>
-            <button class="offers-block__button" type="submit">Подробнее</button>
-        </div>
+        }
     </div>
 
 </div>
