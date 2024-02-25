@@ -1,4 +1,9 @@
-﻿//Registration
+﻿//Home
+function goToHomePage() {
+    window.location.replace('/Home/Index');
+}
+
+//Registration
 function registrateUser(): void {
     let nickname = document.querySelector<HTMLInputElement>(".registration-field__div input[name = 'Nickname']").value;
     let email = document.querySelector<HTMLInputElement>(".registration-field__div input[name = 'Email']").value;
@@ -73,6 +78,10 @@ function loginUser() {
 }
 
 //create Ad
+
+function goToCreateAd() {
+    window.location.replace('/Ad/Create');
+}
 function createAd() {
     let title = document.querySelector<HTMLInputElement>(".ad-input input[name = 'Title']").value;
     let type = document.querySelector<HTMLInputElement>(".ad-select select[name = 'Type']").value;

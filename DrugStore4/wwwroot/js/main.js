@@ -1,3 +1,7 @@
+//Home
+function goToHomePage() {
+    window.location.replace('/Home/Index');
+}
 //Registration
 function registrateUser() {
     var nickname = document.querySelector(".registration-field__div input[name = 'Nickname']").value;
@@ -69,6 +73,9 @@ function loginUser() {
     });
 }
 //create Ad
+function goToCreateAd() {
+    window.location.replace('/Ad/Create');
+}
 function createAd() {
     var title = document.querySelector(".ad-input input[name = 'Title']").value;
     var type = document.querySelector(".ad-select select[name = 'Type']").value;

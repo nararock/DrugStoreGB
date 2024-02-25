@@ -2,25 +2,25 @@
 @model CommonCatalogModel;
 
 <div class="cover">
-    <img class="cover-image" src="img/mainFoto_pills.jpg" alt="">
+    <img class="cover-image" src="/img/mainFoto_pills.jpg" alt="">
     <div class="cover-filter"></div>
 </div>
 <div class="undercover">
     <div class="undecover-center center">
         <div class="undecover-center__item">
-            <img src="img/placeholder.svg" alt="placeholder foto">
+            <img src="/img/placeholder.svg" alt="placeholder foto">
             <p>Выбери свой населенный пункт или ближайший к тебе</p>
         </div>
         <div class="undecover-center__item">
-            <img src="img/list.svg" alt="list foto">
+            <img src="/img/list.svg" alt="list foto">
             <p>Введи в поиске искомое лекарство и смотри результат</p>
         </div>
         <div class="undecover-center__item">
-            <img src="img/time.svg" alt="time foto">
+            <img src="/img/time.svg" alt="time foto">
             <p>Или...выкладывай ненужное тебе лекарство в объявления</p>
         </div>
         <div class="undecover-center__item">
-            <img src="img/product.svg" alt="product foto">
+            <img src="/img/product.svg" alt="product foto">
             <p>И возможно ты кому-то поможешь с приобретением лекарства</p>
         </div>
     </div>
@@ -109,5 +109,5 @@
             </svg>
         </div>
     </div>
-    <button class="placement-button" type="submit">Разместить объявление</button>
+    <button class="placement-button" type="submit" onclick="goToCreateAd()">Разместить объявление</button>
 </div>
