@@ -2,8 +2,11 @@
 function goToHomePage() {
     window.location.replace('/Home/Index');
 }
-
 //Registration
+
+function goToRegistrationPage() {
+    window.location.replace('/Account/Index');
+}
 function registrateUser(): void {
     let nickname = document.querySelector<HTMLInputElement>(".registration-field__div input[name = 'Nickname']").value;
     let email = document.querySelector<HTMLInputElement>(".registration-field__div input[name = 'Email']").value;
@@ -75,6 +78,11 @@ function loginUser() {
                 window.location.replace('/Profile/Index');
             }
         })
+}
+
+function clearErrorLogin() {
+    let error = document.querySelector(".login-error");
+    error.textContent = "";
 }
 
 //create Ad

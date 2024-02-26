@@ -3,6 +3,9 @@ function goToHomePage() {
     window.location.replace('/Home/Index');
 }
 //Registration
+function goToRegistrationPage() {
+    window.location.replace('/Account/Index');
+}
 function registrateUser() {
     var nickname = document.querySelector(".registration-field__div input[name = 'Nickname']").value;
     var email = document.querySelector(".registration-field__div input[name = 'Email']").value;
@@ -71,6 +74,10 @@ function loginUser() {
             window.location.replace('/Profile/Index');
         }
     });
+}
+function clearErrorLogin() {
+    var error = document.querySelector(".login-error");
+    error.textContent = "";
 }
 //create Ad
 function goToCreateAd() {
