@@ -166,18 +166,21 @@ function searchDrug() {
 
 //Profile
 function deleteAd(event) {
-    let idAd = event.target.dataset.id;    
+    let idAd = event.target.dataset.id;
+    let answer = confirm('Подтвердите удаление');
 
+    if (answer) {
     fetch('/Profile/DeleteAd/' + idAd)
-        .then((response) => response.json())
-        .then(answer => {
-            if (answer.Code == 1) {
-                alert("Возникла ошибка при удалении.")
-            }
-            else {
-                let elementTr = event.target.parentElement.parentElement;
-                let elementParent = elementTr.parentElement;
-                elementParent.removeChild(elementTr);
-            }
-        })
+            .then((response) => response.json())
+            .then(answer => {
+                if (answer.Code == 1) {
+                    alert("Возникла ошибка при удалении.")
+                }
+                else {
+                    let elementTr = event.target.parentElement.parentElement;
+                    let elementParent = elementTr.parentElement;
+                    elementParent.removeChild(elementTr);
+                }
+            })
+    }    
 }
