@@ -1,5 +1,8 @@
 ﻿@using DrugStore4.Models
 @model ProfileModel
+@{
+    string[] monthArr = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
+}
 
 <div class="account">
     <div class="account center">
@@ -39,11 +42,11 @@
                                     @for (int i = 0; i < Model.ads.Count; i++)
                                     {
                                         <tr>
-                                            <td>@Model.ads[i].Title</td>
+                                            <td >@Model.ads[i].Title</td>
                                             <td>@Model.ads[i].Category</td>
                                             <td>@Model.ads[i].Dose</td>
                                             <td>@Model.ads[i].Amount</td>
-                                            <td>@Model.ads[i].Month, @Model.ads[i].Year</td>
+                                            <td>@monthArr[@Model.ads[i].Month], @Model.ads[i].Year</td>
                                             <td><img class="td-button" data-id="@Model.ads[i].Id" src="/img/btn.svg" alt="button delete" onclick="deleteAd(event)"></td>
                                         </tr>
                                     }
