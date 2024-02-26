@@ -1,5 +1,8 @@
 ﻿@using DrugStore4.Models;
 @model CommonCatalogModel;
+@{
+    string[] monthArr = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
+}
 
 <div class="cover">
     <img class="cover-image" src="/img/mainFoto_pills.jpg" alt="">
@@ -47,7 +50,7 @@
                         <span class="offers-block__info__second">Количество</span>
                     </div>
                     <div>
-                        <span class="offers-block__info__first">@Model.CatalogModels[i].Month, @Model.CatalogModels[i].Year</span>
+                        <span class="offers-block__info__first">@monthArr[@Model.CatalogModels[i].Month] , @Model.CatalogModels[i].Year</span>
                         <span class="offers-block__info__second">Срок годности</span>
                     </div>
                 </div>
