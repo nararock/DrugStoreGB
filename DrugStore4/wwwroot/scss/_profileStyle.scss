@@ -174,3 +174,16 @@
     border-top: 2px solid #4F9C2C;
     cursor: pointer;
 }
+
+@media(max-width: 760px) {
+    .tab-content {
+        .tab-profile {
+            .tab-profile__div{
+                width: 345px;
+                input{
+                    width: 250px
+                }
+            }
+        }
+    }
+}

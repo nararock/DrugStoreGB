@@ -14,41 +14,41 @@
             Название
             <input type="text" name="Title">
         </div>
-        <label for="" class="ad-select">
+        <label for="selectType" class="ad-select">
             Форма выпуска
-            <select name="Type" id="">
+            <select name="Type" id="selectType">
                 @foreach(var element in Model.typeAd)
                 {
                     <option name="" value='@element.Id'>@element.Name</option>
                 }
             </select>
         </label>
-        <label for="" class="ad-select">
+        <label for="selectCategory" class="ad-select">
             Категория
-            <select name="Category" id="">
+            <select name="Category" id="selectCategory">
                 @foreach(var element in Model.categoryAd)
                 {
                     <option name="" value="@element.Id">@element.Name</option>
                 }
             </select>
         </label>
-        <label for="" class="ad-input">
+        <label for="selectDose" class="ad-input">
             Дозировка
-            <input name="Dose" type="text">
+            <input id="selectDose" name="Dose" type="text">
         </label>
-        <label for="" class="ad-input">
+        <label for="selectAmount" class="ad-input">
             Оставшееся количество
-            <input name="Amount" type="text">
+            <input id="selectAmount" name="Amount" type="text">
         </label>
         <label for="" class="ad-select">
             Срок годности
-            <select name="Month" id="">
+            <select name="Month">
                 @for (int i = 0; i < monthArr.Length; i++)
                 {
                     <option name="" value="@(i+1)">@monthArr[i]</option>
                 }
             </select>
-            <select name="Year" id="">
+            <select name="Year">
                 <option value="@year">@year</option>
                 <option value="@(year + 1)">@(year + 1)</option>
                 <option value="@(year + 2)">@(year + 2)</option>

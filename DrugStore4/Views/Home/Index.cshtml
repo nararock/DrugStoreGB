@@ -34,32 +34,31 @@
     <div class="offers-block">
         @for (int i = 0; i < 6; i++)
         {
-            <div data-id="@Model.CatalogModels[i].Id" class="offers-block__item">
+            <div class="offers-block__item" onclick="goToDrugInfo(@Model.CatalogModels[i].Id)">
                 <img src="/img/@Model.CatalogModels[i].PictureURL">
                 <div class="offers-block__title">
                     <h1 class="offers-block__title__big">@Model.CatalogModels[i].Title</h1>
                     <h3 class="offers-block__title__small">@Model.CatalogModels[i].Category</h3>
                 </div>
                 <div class="offers-block__info">
-                    <div>
+                    <div class="B">
                         <span class="offers-block__info__first">@Model.CatalogModels[i].Dose</span>
                         <span class="offers-block__info__second">Дозировка</span>
                     </div>
-                    <div>
+                    <div class="C">
                         <span class="offers-block__info__first">@Model.CatalogModels[i].Amount</span>
                         <span class="offers-block__info__second">Количество</span>
                     </div>
-                    <div>
+                    <div class="A">
                         <span class="offers-block__info__first">@monthArr[@Model.CatalogModels[i].Month] , @Model.CatalogModels[i].Year</span>
                         <span class="offers-block__info__second">Срок годности</span>
                     </div>
                 </div>
-                <button class="offers-block__button" type="submit" onclick="goToDrugInfo(event)">Подробнее</button>
+                @* <button class="offers-block__button" type="submit" onclick="goToDrugInfo(event)">Подробнее</button> *@
 
             </div>
         }
     </div>
-
 </div>
 <div class="placement center class=" reason-item__svg"">
     <h1 class="placement-title">Размещайте здесь свои объявления!</h1>

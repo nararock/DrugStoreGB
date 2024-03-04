@@ -59,8 +59,6 @@
             border: 1px solid #EFEFEF;
             @include font($color, $size, 700, normal);
             text-transform: uppercase;
-            appearance: none;
-            /*background-image: url(../img/arrow_select.svg);*/
             background-position: right center;
             background-repeat: no-repeat;
             background-size: 14px;

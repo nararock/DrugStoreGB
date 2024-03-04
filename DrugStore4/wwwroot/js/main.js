@@ -1,6 +1,29 @@
 //Home
+//close details
+var All_Details = document.querySelectorAll('details');
+All_Details.forEach(function (deet) {
+    deet.addEventListener('toggle', toggleOpenOneOnly);
+});
+function toggleOpenOneOnly(e) {
+    var _this = this;
+    if (this.open) {
+        All_Details.forEach(function (deet) {
+            if (deet != _this && deet.open)
+                deet.open = false;
+        });
+    }
+}
 function goToHomePage() {
     window.location.replace('/Home/Index');
+}
+function goToCatalog() {
+    window.location.replace('/Catalog/Index');
+}
+function goToAdCreate() {
+    window.location.replace('/Ad/Create');
+}
+function goToProfile() {
+    window.location.replace('/Profile/Index');
 }
 //Registration
 function goToRegistrationPage() {
@@ -123,8 +146,7 @@ function createAd() {
     });
 }
 //DrugInfoPage Show.cshtml
-function goToDrugInfo(event) {
-    var id = event.target.parentElement.dataset.id;
+function goToDrugInfo(id) {
     window.location.replace('/Ad/Show/' + id);
 }
 //CatalogPage

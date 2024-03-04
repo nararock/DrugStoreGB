@@ -175,3 +175,17 @@
         }
     }
 }
+
+@media(max-width: 760px) {
+    .catalog {
+        &-content {
+            gap: 30px;
+            .catalog-offers {
+                &__block {
+                    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                    gap: 15px;
+                }
+            }
+        }
+    }
+}

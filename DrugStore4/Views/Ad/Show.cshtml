@@ -1,5 +1,8 @@
 ﻿@using DrugStore4.Models;
 @model AdInfoModel
+@{
+    string[] monthArr = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
+}
 
 <div class="drug center">
     <h1 class="drug-title">@Model.Title</h1>
@@ -9,19 +12,18 @@
             <h3 class="drug-info__title">Информация</h3>
             <p class="drug-info__text">Дозировка <span>@Model.Dose</span></p>
             <p class="drug-info__text">Форма выпуска <span>@Model.Category</span></p>
-            <p class="drug-info__text">Срок годности <span>@Model.Month, @Model.Year</span></p>
+            <p class="drug-info__text">Срок годности <span>@monthArr[@Model.Month], @Model.Year</span></p>
             <p class="drug-info__text">Количество <span>@Model.Amount</span></p>
             <p class="drug-info__text">Производитель <span>@Model.Manufacturer</span></p>
         </div>
         <div class="drug-contact">
-            <h3 class="drug-contact__title">Контакты</h3>
+            <h3 class="drug-contact__title">Контакты </h3>
             <p class="drug-contact__text">Имя <span>@Model.Nickname</span></p>
             <p class="drug-contact__text">Город <span>@Model.City</span></p>
             <p class="drug-contact__text">
                 Контакты
                 <span class="drug-contact__icons">
-                    <i class="fa fa-whatsapp fa-lg" aria-hidden="true"></i>
-                    <i class="fa fa-vk fa-lg" aria-hidden="true"></i>
+                    @Model.UserPhone
                 </span>
             </p>
             <p class="drug-contact__text">

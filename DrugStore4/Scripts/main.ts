@@ -1,6 +1,34 @@
 ﻿//Home
+
+//close details
+const All_Details = document.querySelectorAll('details');
+
+All_Details.forEach(deet => {
+    deet.addEventListener('toggle', toggleOpenOneOnly)
+})
+
+function toggleOpenOneOnly(e) {
+    if (this.open) {
+        All_Details.forEach(deet => {
+            if (deet != this && deet.open) deet.open = false
+        });
+    }
+}
+
 function goToHomePage() {
     window.location.replace('/Home/Index');
+}
+
+function goToCatalog() {
+    window.location.replace('/Catalog/Index');
+}
+
+function goToAdCreate() {
+    window.location.replace('/Ad/Create');
+}
+
+function goToProfile() {
+    window.location.replace('/Profile/Index');
 }
 //Registration
 
@@ -132,8 +160,7 @@ function createAd() {
 }
 
 //DrugInfoPage Show.cshtml
-function goToDrugInfo(event) {
-    let id = event.target.parentElement.dataset.id;
+function goToDrugInfo(id) {
     window.location.replace('/Ad/Show/' + id);
 }
 
