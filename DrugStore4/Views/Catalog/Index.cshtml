@@ -31,27 +31,26 @@
             <div class="catalog-offers__block">
                 @foreach(var element in Model.CatalogModels)
                 {
-                    <div data-id="@element.Id" class="catalog-offers__item">
+                    <div data-id="@element.Id" class="catalog-offers__item" onclick="goToDrugInfo(@element.Id)">
                         <img src="/img/@element.PictureURL" alt="capsules foto">
                         <div class="catalog-offers__title">
                             <h1 class="catalog-offers__title__big">@element.Title</h1>
                             <h3 class="catalog-offers__title__small">@element.Category</h3>
                         </div>
                         <div class="catalog-offers__info">
-                            <div>
+                            <div class="B">
                                 <span class="catalog-offers__info__first">@element.Dose</span>
                                 <span class="catalog-offers__info__second">Дозировка</span>
                             </div>
-                            <div>
+                            <div class="C">
                                 <span class="catalog-offers__info__first">@element.Amount</span>
                                 <span class="catalog-offers__info__second">Количество</span>
                             </div>
-                            <div>
+                            <div class="A">
                                 <span class="catalog-offers__info__first">@monthArr[element.Month], @element.Year</span>
                                 <span class="catalog-offers__info__second">Срок годности</span>
                             </div>
                         </div>
-                        <button class="catalog-offers__button" onclick="goToDrugInfo(event)" type="submit">Подробнее</button>
                     </div>
                 }
             </div>

@@ -104,7 +104,6 @@
                             align-items: center;
                             padding-top: 17px;
                             padding-bottom: 13px;
-                            margin-bottom: 20px;
                             text-align: center
                         }
 
@@ -134,6 +133,11 @@
                         color: #FFF;
                         cursor: pointer;
                     }
+                }
+
+                .catalog-offers__item:hover {
+                    cursor: pointer;
+                    border-color: #60B021;
                 }
             }
         }
@@ -176,7 +180,7 @@
     }
 }
 
-@media(max-width: 760px) {
+@media(max-width: 768px) {
     .catalog {
         &-content {
             gap: 30px;
@@ -185,6 +189,52 @@
                     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
                     gap: 15px;
                 }
+            }
+        }
+    }
+}
+
+@media(max-width: 480px) {
+    .catalog {
+        &-content {
+            display: block;
+
+            .catalog-offers {
+                width: inherit;
+
+                &__block {
+                    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                    gap: 10px;
+
+                    .catalog-offers__item {
+
+                        .catalog-offers__info {
+                            grid-template-areas:
+                                "B B B B  B B C C  C C C C" "A A A A   A A A A  A A A A";
+                            grid-template-columns: none;
+
+                            .B {
+                                grid-area: B;
+                                margin-bottom: 0px;
+                            }
+
+                            .C {
+                                grid-area: C;
+                                margin-bottom: 0px;
+                            }
+
+                            .A {
+                                grid-area: A;
+                                border-top: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .catalog-filter {
+                display: none;
+                width: 0%;
             }
         }
     }
