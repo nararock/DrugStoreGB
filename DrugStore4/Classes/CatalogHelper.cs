@@ -18,11 +18,11 @@ namespace DrugStore4.Classes
             //filter применение фильтра по дате
             if (filter == 0)
             {
-                catalog = catalog.OrderBy(c => c.Id);
+                catalog = catalog.OrderByDescending(c => c.Id);
             }
             else
             {
-                catalog = catalog.OrderByDescending(c => c.Id);
+                catalog = catalog.OrderBy(c => c.Id);
             }
             //type
             if (int.TryParse(type, out int numType))
