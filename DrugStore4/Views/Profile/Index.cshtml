@@ -16,7 +16,17 @@
                             <div class="tab-profile__div">Email:<input type="text" name="Email" value="@Model.Email" readonly></div>
                             <div class="tab-profile__div">Телефон:<input type="text" name="Telephone" value="@Model.Telephone" readonly></div>
                         </div>
-                        <div class="tab-profile__left">
+                        <div class="tab-profile__right">
+                            <div class="tab-profile__div">Город:<input type="text" name="City" value="@Model.City" readonly></div>
+                            <div class="tab-profile__div">Район:<input type="text" name="District" value="@Model.District" readonly></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-profile__mobile">
+                        <div class="tab-profile__mobile__fields">
+                            <div class="tab-profile__div">Имя:<input type="text" name="Nickname" value="@Model.Nickname" readonly></div>
+                            <div class="tab-profile__div">Email:<input type="text" name="Email" value="@Model.Email" readonly></div>
+                            <div class="tab-profile__div">Телефон:<input type="text" name="Telephone" value="@Model.Telephone" readonly></div>
                             <div class="tab-profile__div">Город:<input type="text" name="City" value="@Model.City" readonly></div>
                             <div class="tab-profile__div">Район:<input type="text" name="District" value="@Model.District" readonly></div>
                         </div>
@@ -31,10 +41,10 @@
                                 <thead>
                                     <tr>
                                         <th>Название</th>
-                                        <th>Тип</th>
+                                        <th class="th-type__disappear">Тип</th>
                                         <th>Доза</th>
-                                        <th>Количество</th>
-                                        <th>Срок годности</th>
+                                        <th>Число</th>
+                                        <th>Годность</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -43,7 +53,7 @@
                                     {
                                         <tr>
                                             <td >@Model.ads[i].Title</td>
-                                            <td>@Model.ads[i].Category</td>
+                                            <td class="td-type__disappear">@Model.ads[i].Category</td>
                                             <td>@Model.ads[i].Dose</td>
                                             <td>@Model.ads[i].Amount</td>
                                             <td>@monthArr[@Model.ads[i].Month], @Model.ads[i].Year</td>

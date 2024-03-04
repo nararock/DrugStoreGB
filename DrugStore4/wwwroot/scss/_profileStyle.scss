@@ -39,7 +39,9 @@
 .tab-content {
     display: none;
 
-
+    .tab-profile__mobile{
+        display: none;
+    }
     .tab-profile {
         display: flex;
         flex-direction: row;
@@ -175,15 +177,119 @@
     cursor: pointer;
 }
 
+@media(max-width: 1140px) {
+    .tab-content {
+        .tab-profile {
+            .tab-profile__div {
+                width: 490px;
+
+                input {
+                    width: 440px
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 1024px) {
+    .tab-content {
+        .tab-profile {
+            .tab-profile__div {
+                width: 450px;
+
+                input {
+                    width: 400px
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 950px) {
+    .tab-content {
+        .tab-profile {
+            .tab-profile__div {
+                width: 430px;
+
+                input {
+                    width: 400px
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 900px) {
+    .tab-content {
+        .tab-profile {
+            .tab-profile__div {
+                width: 420px;
+
+                input {
+                    width: 390px
+                }
+            }
+        }
+    }
+}
+
 @media(max-width: 760px) {
     .tab-content {
         .tab-profile {
             .tab-profile__div{
                 width: 345px;
                 input{
-                    width: 250px
+                    width: 300px
                 }
             }
         }
+    }
+}
+
+@media(max-width: 700px) {
+    .tab-content {
+        .tab-profile {
+            display: none;
+        }
+
+        .tab-profile__mobile {
+            display: block;
+
+            &__fields {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                padding: 10px;
+            }
+
+            .tab-profile__div {
+                background-color: #F5F5F5;
+                padding-left: 20px;
+                border: 1px solid #E3E3E3;
+                width: 90%;
+                height: 65px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 10px;
+                @include font(#75758A, 14px, 400, $height);
+
+                input {
+                    background-color: #F5F5F5;
+                    width: 75%;
+                    border: none;
+                    @include font($color, $size, 700, $height);
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 480px) {
+    .th-type__disappear{
+        display: none;
+    }
+    .td-type__disappear {
+        display: none !important;
     }
 }
