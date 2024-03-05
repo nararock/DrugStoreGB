@@ -15,7 +15,7 @@
             <input type="text" name="Title">
         </div>
         <label for="selectType" class="ad-select">
-            Форма выпуска
+            Категория
             <select name="Type" id="selectType">
                 @foreach(var element in Model.typeAd)
                 {
@@ -24,7 +24,7 @@
             </select>
         </label>
         <label for="selectCategory" class="ad-select">
-            Категория
+            Форма
             <select name="Category" id="selectCategory">
                 @foreach(var element in Model.categoryAd)
                 {
@@ -37,11 +37,11 @@
             <input id="selectDose" name="Dose" type="text">
         </label>
         <label for="selectAmount" class="ad-input">
-            Оставшееся количество
+            Количество
             <input id="selectAmount" name="Amount" type="text">
         </label>
         <label for="" class="ad-select">
-            Срок годности
+            Годность
             <select name="Month">
                 @for (int i = 0; i < monthArr.Length; i++)
                 {

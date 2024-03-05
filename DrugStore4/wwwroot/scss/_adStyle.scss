@@ -98,3 +98,46 @@
         cursor: pointer;
     }
 }
+
+@media(max-width: 480px) {
+    .ad {
+        &-title {
+            font-size: 25px;
+            text-align: center;
+        }
+
+        &-subtitle {
+        }
+
+        .wrapper {
+            gap: 20px;
+            align-items: center;
+        }
+
+        &-input {
+            gap: 10px;
+
+            input {
+                width: 180px;
+            }
+        }
+
+        &-select {
+            gap: 10px;
+
+            #selectType {
+                width: 250px;
+            }
+
+            #selectCategory {
+                width: 230px;
+            }
+        }
+
+        &-textarea{
+            gap: 10px;
+            height: 150px;
+            width: 290px;
+        }
+    }
+}
