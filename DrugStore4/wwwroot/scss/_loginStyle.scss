@@ -75,3 +75,75 @@
         border: none;
     }
 }
+
+@media(max-width: 550px){
+    .login{
+        &-title{
+            font-size: 25px;
+        }
+        &-field{
+            &__div{
+                width:480px;
+            }
+        }
+    }
+}
+
+@media(max-width: 480px) {
+    .login {
+        &-field {
+            &__div {
+                width: 400px;
+            }
+        }
+
+        &-button {
+            width: 250px;
+        }
+
+        &-registrate{
+            width: 250px;
+        }
+    }
+}
+
+@media(max-width: 400px) {
+    .login {
+        &-field {
+            &__div {
+                width: 360px;
+            }
+        }
+
+        &-button {
+            width: 250px;
+        }
+
+        &-registrate {
+            width: 250px;
+        }
+    }
+}
+
+@media(max-width: 360px) {
+
+    .login {
+        &-title {
+            font-size: 20px;
+        }
+
+        &-field {
+            &__div {
+                width: 320px;
+            }
+        }
+
+        &-button {
+            width: 200px;
+        }
+
+        &-registrate {
+            width: 200px;
+        }
+    }
+}
