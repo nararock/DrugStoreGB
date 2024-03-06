@@ -1,6 +1,7 @@
 ﻿@import './helpers/helpers';
 .account {
     flex: 1 0 auto;
+
     &-header {
         &__word {
             background: $greenGradient;
@@ -24,6 +25,30 @@
 
         -webkit-text-size-adjust: 100%;
         -webkit-tap-highlight-color: transparent;
+    }
+
+    &-button {
+       margin: auto;
+        border-radius: 100px;
+        background: #FFF;
+        border: 1px;
+       @include font($color, $size, 700, normal);
+        padding: 20px 45px;
+        margin-top: 45px;
+        margin-bottom: 50px;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: Ubuntu;
+        border-radius: 100px;
+        box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.15);
+        display: none;
+    }
+
+    &-button:hover {
+        background-color: #75758A;
+        color: #FFF;
+        cursor: pointer;
     }
 }
 
@@ -286,6 +311,16 @@
 }
 
 @media(max-width: 480px) {
+    .account {
+        .container {
+            margin-top: 20px;
+        }
+
+        &-button{
+            display: block;
+            margin-top: 20px;
+        }
+    }
     .th-type__disappear{
         display: none;
     }

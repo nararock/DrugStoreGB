@@ -192,4 +192,7 @@ function deleteAd(event) {
         });
     }
 }
+function goToLogout() {
+    window.location.replace('/Account/Logout');
+}
 //# sourceMappingURL=main.js.map

@@ -211,3 +211,7 @@ function deleteAd(event) {
             })
     }    
 }
+
+function goToLogout() {
+    window.location.replace('/Account/Logout');
+}
