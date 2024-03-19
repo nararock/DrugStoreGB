@@ -62,7 +62,7 @@ namespace DrugStore4.Classes
         {
             int IdFilter = int.Parse(filter);
             IQueryable<Ad> catalogModels = getAds(dbContext, type, IdFilter, searchDrug);           
-            int amount = catalogModels.Count() / blockNumber;
+            int amount = (catalogModels.Count() / blockNumber) + 1;
             List<CatalogModel> catalogModelsPage = GetCatalogModelOnCurrentPage(catalogModels, page);
             List<DrugType> types = getListType(dbContext);
             CommonCatalogModel commonModel = new CommonCatalogModel

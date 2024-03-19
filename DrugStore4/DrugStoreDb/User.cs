@@ -10,3 +10,4 @@ namespace DrugStore4.DrugStoreDb
         public string District { get; set; }
     }
 }
+
