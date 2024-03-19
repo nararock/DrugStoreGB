@@ -1,7 +1,6 @@
 ﻿@using DrugStore4.Models;
 @model CommonCatalogModel;
 @{
-    string[] monthArr = { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
     Tuple<int, string>[] options = { new Tuple<int, string>(0, "Сначала новые"), new Tuple<int, string>(1, "Сначала старые") };
 }
 
@@ -47,8 +46,16 @@
                                 <span class="catalog-offers__info__second">Количество</span>
                             </div>
                             <div class="A">
-                                <span class="catalog-offers__info__first">@monthArr[element.Month], @element.Year</span>
-                                <span class="catalog-offers__info__second">Срок годности</span>
+                                @if (element.Month < 10)
+                                {
+                                    var month = "0" + @element.Month;
+                                    <span class="catalog-offers__info__first">@month.@element.Year</span>
+                                }
+                                else
+                                {
+                                    <span class="catalog-offers__info__first">@element.Month.@element.Year</span>
+                                }                                
+                                <span class="catalog-offers__info__second">Годность</span>
                             </div>
                         </div>
                     </div>
@@ -61,7 +68,15 @@
                 {
                     @for(int i = 0; i < Model.AmountPage; i++)
                     {
-                        <button type="button" onclick="changePage(event)">@(i + 1)</button>
+                        @if ((i + 1) == Model.NumberPage)
+                        {
+                            <button type="button" style="color:#60B021">@(i + 1)</button>
+                        }
+                        else
+                        {
+                            <button type="button" onclick="changePage(event)">@(i + 1)</button>
+                        }
+                        
                     }
                 }
                 else if (@Model.NumberPage > 5 && @Model.NumberPage < (Model.AmountPage - 4))
