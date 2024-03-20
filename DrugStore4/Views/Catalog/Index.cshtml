@@ -28,43 +28,54 @@
     <div class="catalog-content">
         <div class="catalog-offers">
             <div class="catalog-offers__block">
-                @foreach(var element in Model.CatalogModels)
+                @if (Model.SearchDrug != "" && Model.CatalogModels.Count == 0)
                 {
-                    <div data-id="@element.Id" class="catalog-offers__item" onclick="goToDrugInfo(@element.Id)">
-                        <img src="/img/@element.PictureURL" alt="capsules foto">
-                        <div class="catalog-offers__title">
-                            <h1 class="catalog-offers__title__big">@element.Title</h1>
-                            <h3 class="catalog-offers__title__small">@element.Category</h3>
-                        </div>
-                        <div class="catalog-offers__info">
-                            <div class="B">
-                                <span class="catalog-offers__info__first">@element.Dose</span>
-                                <span class="catalog-offers__info__second">Дозировка</span>
-                            </div>
-                            <div class="C">
-                                <span class="catalog-offers__info__first">@element.Amount</span>
-                                <span class="catalog-offers__info__second">Количество</span>
-                            </div>
-                            <div class="A">
-                                @if (element.Month < 10)
-                                {
-                                    var month = "0" + @element.Month;
-                                    <span class="catalog-offers__info__first">@month.@element.Year</span>
-                                }
-                                else
-                                {
-                                    <span class="catalog-offers__info__first">@element.Month.@element.Year</span>
-                                }                                
-                                <span class="catalog-offers__info__second">Годность</span>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="catalog-offers__block__notfound">
+                        <div>По вашему запросу "@Model.SearchDrug" не найдено ни одного объявления.</div>
+                        <a href="/Catalog/Index">Вернитесь в каталог.</a>
+                    </div>                    
                 }
+                else
+                {
+                    @foreach (var element in Model.CatalogModels)
+                    {
+                        <div data-id="@element.Id" class="catalog-offers__item" onclick="goToDrugInfo(@element.Id)">
+                            <img src="/img/@element.PictureURL" alt="capsules foto">
+                            <div class="catalog-offers__title">
+                                <h1 class="catalog-offers__title__big">@element.Title</h1>
+                                <h3 class="catalog-offers__title__small">@element.Category</h3>
+                            </div>
+                            <div class="catalog-offers__info">
+                                <div class="B">
+                                    <span class="catalog-offers__info__first">@element.Dose</span>
+                                    <span class="catalog-offers__info__second">Дозировка</span>
+                                </div>
+                                <div class="C">
+                                    <span class="catalog-offers__info__first">@element.Amount</span>
+                                    <span class="catalog-offers__info__second">Количество</span>
+                                </div>
+                                <div class="A">
+                                    @if (element.Month < 10)
+                                    {
+                                        var month = "0" + @element.Month;
+                                        <span class="catalog-offers__info__first">@month.@element.Year</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="catalog-offers__info__first">@element.Month.@element.Year</span>
+                                    }
+                                    <span class="catalog-offers__info__second">Годность</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }               
             </div>
-            <div class="catalog-offers__line"></div>
             
-            <div class="catalog-offers__pagination">
-                @if (Model.AmountPage <= 6)
+            @if (Model.CatalogModels.Count > 0)
+            {
+                <div class="catalog-offers__pagination">
+                @if (Model.AmountPage <= 6 )
                 {
                     @for(int i = 0; i < Model.AmountPage; i++)
                     {
@@ -108,6 +119,8 @@
                     }
                 }
             </div>
+            }
+            
         </div>
         <div class="catalog-filter">
             <div></div>
