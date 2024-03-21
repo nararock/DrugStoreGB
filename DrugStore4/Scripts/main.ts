@@ -30,6 +30,10 @@ function goToAdCreate() {
 function goToProfile() {
     window.location.replace('/Profile/Index');
 }
+
+function goToLogin() {
+    window.location.replace('/Account/Login');
+}
 //Registration
 
 function goToRegistrationPage() {
