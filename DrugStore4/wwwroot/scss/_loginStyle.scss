@@ -34,7 +34,6 @@
             input {
                 border: none;
                 @include font($color, $size, 700, normal);
-                text-transform: uppercase;
             }
         }
     }
