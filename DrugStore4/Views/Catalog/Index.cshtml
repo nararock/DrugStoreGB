@@ -55,14 +55,14 @@
                                     <span class="catalog-offers__info__second">Количество</span>
                                 </div>
                                 <div class="A">
-                                    @if (element.Month < 10)
+                                    @if ((element.Month + 1) < 10)
                                     {
-                                        var month = "0" + @element.Month;
+                                        var month = "0" + (@element.Month + 1);
                                         <span class="catalog-offers__info__first">@month.@element.Year</span>
                                     }
                                     else
                                     {
-                                        <span class="catalog-offers__info__first">@element.Month.@element.Year</span>
+                                        <span class="catalog-offers__info__first">@(element.Month + 1).@element.Year</span>
                                     }
                                     <span class="catalog-offers__info__second">Годность</span>
                                 </div>
