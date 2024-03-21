@@ -126,14 +126,19 @@
 
         &-content {
             .drug-info, .drug-contact {
-
-
-
                 &__text {
                     flex-direction: column;
                     gap: 10px;
                 }
             }
+        }
+    }
+}
+
+@media(max-width: 480px){
+    .drug {
+        &-content {
+            margin-bottom: 100px;
         }
     }
 }

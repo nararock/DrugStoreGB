@@ -69,13 +69,18 @@
 
 @media(max-width: 480px) {
     .registration {
-        &-title{
+        &-title {
             font-size: 25px;
         }
+
         &-field {
             &__div {
                 width: 400px;
             }
+        }
+
+        &-button{
+            margin-bottom: 100px;
         }
     }
 }

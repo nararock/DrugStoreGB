@@ -267,8 +267,10 @@
 
 @media(max-width: 480px) {
     .catalog {
+
         &-content {
             display: block;
+            margin-bottom: 100px;
 
             .catalog-offers {
                 width: inherit;

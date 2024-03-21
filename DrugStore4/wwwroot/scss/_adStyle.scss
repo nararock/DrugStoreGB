@@ -101,13 +101,12 @@
 
 @media(max-width: 480px) {
     .ad {
+
         &-title {
             font-size: 25px;
             text-align: center;
         }
 
-        &-subtitle {
-        }
 
         .wrapper {
             gap: 20px;
@@ -134,10 +133,14 @@
             }
         }
 
-        &-textarea{
+        &-textarea {
             gap: 10px;
             height: 150px;
             width: 290px;
+        }
+
+        &-button{
+            margin-bottom: 100px;
         }
     }
 }
