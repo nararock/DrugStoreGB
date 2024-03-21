@@ -53,8 +53,16 @@
                         <span class="offers-block__info__second">Количество</span>
                     </div>
                     <div class="A">
-                        <span class="offers-block__info__first">@monthArr[@Model.CatalogModels[i].Month] , @Model.CatalogModels[i].Year</span>
-                        <span class="offers-block__info__second">Срок годности</span>
+                        @if ((Model.CatalogModels[i].Month + 1) < 10)
+                        {
+                            var month = "0" + (@Model.CatalogModels[i].Month + 1);
+                            <span class="offers-block__info__first">@month.@Model.CatalogModels[i].Year</span>
+                        }
+                        else
+                        {
+                            <span class="offers-block__info__first">@(Model.CatalogModels[i].Month + 1).@Model.CatalogModels[i].Year</span>
+                        }                        
+                        <span class="offers-block__info__second">Годность</span>
                     </div>
                 </div>
             </div>
