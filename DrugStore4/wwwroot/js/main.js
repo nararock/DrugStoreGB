@@ -14,23 +14,23 @@ function toggleOpenOneOnly(e) {
     }
 }
 function goToHomePage() {
-    window.location.replace('/Home/Index');
+    window.location.href = '/Home/Index';
 }
 function goToCatalog() {
-    window.location.replace('/Catalog/Index');
+    window.location.href = '/Catalog/Index';
 }
 function goToAdCreate() {
-    window.location.replace('/Ad/Create');
+    window.location.href = '/Ad/Create';
 }
 function goToProfile() {
-    window.location.replace('/Profile/Index');
+    window.location.href = '/Profile/Index';
 }
 function goToLogin() {
-    window.location.replace('/Account/Login');
+    window.location.href = '/Account/Login';
 }
 //Registration
 function goToRegistrationPage() {
-    window.location.replace('/Account/Index');
+    window.location.href = '/Account/Index';
 }
 function registrateUser() {
     var nickname = document.querySelector(".registration-field__div input[name = 'Nickname']").value;
@@ -107,7 +107,7 @@ function clearErrorLogin() {
 }
 //create Ad
 function goToCreateAd() {
-    window.location.replace('/Ad/Create');
+    window.location.href = '/Ad/Create';
 }
 function createAd() {
     var title = document.querySelector(".ad-input input[name = 'Title']").value;
@@ -150,14 +150,14 @@ function createAd() {
 }
 //DrugInfoPage Show.cshtml
 function goToDrugInfo(id) {
-    window.location.replace('/Ad/Show/' + id);
+    window.location.href = '/Ad/Show/' + id;
 }
 //CatalogPage
 function changePage(event) {
     var page = event.target.textContent;
     fetch('/Catalog/Index?page=' + page)
         .then(function (response) { return response.json(); });
-    window.location.replace('/Catalog/Index?page=' + page);
+    window.location.href = '/Catalog/Index?page=' + page;
 }
 function filterData(event) {
     var indexOption = event.target.options.selectedIndex;
@@ -174,7 +174,7 @@ function searchDrug() {
     var drug = input.value;
     fetch('/Catalog/Index?search=' + drug)
         .then(function (response) { return response.json; });
-    window.location.replace('/Catalog/Index?search=' + drug);
+    window.location.href = '/Catalog/Index?search=' + drug;
 }
 //Profile
 function deleteAd(event) {
@@ -196,6 +196,6 @@ function deleteAd(event) {
     }
 }
 function goToLogout() {
-    window.location.replace('/Account/Logout');
+    window.location.href = '/Account/Logout';
 }
 //# sourceMappingURL=main.js.map
