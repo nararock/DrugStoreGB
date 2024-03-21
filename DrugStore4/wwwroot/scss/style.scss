@@ -572,8 +572,10 @@ body {
         background-color: #F5F5F5;
         border-top: 1px solid #75758A;
         position: -webkit-sticky;
-        position: sticky;
+        position: fixed;
         bottom: 0;
+        right: 0;
+        border-bottom-left-radius: 0;
 
         &__logo {
             width: 100px;
@@ -681,6 +683,7 @@ body {
 
         &-button {
             margin-top: 20px;
+            margin-bottom: 40px;
         }
     }
 
